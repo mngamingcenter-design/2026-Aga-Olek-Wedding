@@ -207,35 +207,38 @@ h1 .font-script-hero + .font-script-hero {
 </div>
 
 <!-- ==================== SECCIÓN HERO - VERSIÓN MÓVIL OPTIMIZADA ==================== -->
-<section id="inicio" class="relative h-[85vh] md:h-screen flex items-center justify-center overflow-hidden">
+<section id="inicio" class="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden">
   <div class="absolute inset-0">
-      <img src="https://i.ibb.co/k6DwMm39/2.jpg" 
-      alt="Agnieszka & Mario Alejandro - Boda 2026" 
-      class="w-full h-full object-cover"
-      style="object-position: center center;"
-       />
-      <!-- Degradado suave (se mantiene igual) -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/40 to-black/75"></div>
+    <img 
+      src="https://i.ibb.co/k6DwMm39/2.jpg" 
+      alt="Agnieszka & Mario Alejandro" 
+      class="absolute inset-0 w-full h-full object-cover md:object-[center_30%]"
+      style="object-position: center 35%;"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/80"></div>
   </div>
 
-    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto fade-in">
+  <div class="relative z-10 text-center px-5 sm:px-8 max-w-4xl mx-auto fade-in pt-12 md:pt-0">
       <div class="mb-8">
-        <span class="text-4xl md:text-6xl text-primary/80">✧</span>
-      </div>
-      <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-wide leading-tight drop-shadow-[0_6px_20px_rgba(0,0,0,0.95)]">
-        <span class="font-script-hero block text-[2.8rem] md:text-[4.5rem]">Agnieszka</span>
-        <span class="font-script-hero block text-primary/90 my-3 text-[3rem] md:text-[5rem]">&</span>
-        <span class="font-script-hero block text-[2.4rem] md:text-[4rem]">Mario Alejandro</span>
-      </h1>
+        <!-- ↓↓↓ Aquí puedes ajustar el padding superior si los nombres quedan muy arriba o abajo en móvil -->
+    <div class="mb-6 md:mb-10">
+      <span class="text-4xl md:text-6xl text-primary/80">✧</span>
+    </div>
+    
+    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-wide leading-tight drop-shadow-[0_6px_20px_rgba(0,0,0,0.95)]">
+      <span class="font-script-hero block text-[2.8rem] sm:text-[3.5rem] md:text-[4.5rem]">Agnieszka</span>
+      <span class="font-script-hero block text-primary/90 my-2 sm:my-4 text-[3rem] sm:text-[4rem] md:text-[5rem]">&</span>
+      <span class="font-script-hero block text-[2.4rem] sm:text-[3rem] md:text-[4rem]">Mario Alejandro</span>
+    </h1>
 
-      <div class="inline-block border-t border-b border-white/30 py-4 px-8 mb-8">
-        <p data-i18n="hero.date" class="text-2xl md:text-3xl text-white font-body tracking-widest">Viernes 18 de septiembre 2026</p>
-      </div>
+    <div class="inline-block border-t border-b border-white/30 py-4 px-6 sm:px-10 my-6 md:my-10">
+      <p data-i18n="hero.date" class="text-xl sm:text-2xl md:text-3xl text-white font-body tracking-widest">Viernes 18 de septiembre 2026</p>
+    </div>
 
-      <p data-i18n="hero.subtitle" class="text-xl md:text-2xl text-white/90 font-body italic">Nos casamos y queremos celebrarlo contigo</p>
+    <p data-i18n="hero.subtitle" class="text-lg sm:text-xl md:text-2xl text-white/90 font-body italic">Nos casamos y queremos celebrarlo contigo</p>
 
-      <div class="mt-8">
-        <span class="text-4xl md:text-6xl text-primary/80">✧</span>
+    <div class="mt-8 md:mt-12">
+      <span class="text-4xl md:text-6xl text-primary/80">✧</span>
       </div>
     </div>
   </section>
