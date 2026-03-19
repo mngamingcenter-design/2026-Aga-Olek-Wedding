@@ -1069,6 +1069,52 @@ box.classList.add("hidden")
 }
       }
     }
+    // --- LÓGICA PARA EL MENÚ MÓVIL ---
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const mobileMenuDiv = document.getElementById('mobile-menu');
+
+// Abrir y cerrar menú
+mobileBtn.addEventListener('click', () => {
+  mobileMenuDiv.classList.toggle('hidden');
+  
+  // Cambiar icono dinámicamente
+  const icon = mobileBtn.querySelector('i');
+  if (mobileMenuDiv.classList.contains('hidden')) {
+    icon.setAttribute('data-lucide', 'menu');
+  } else {
+    icon.setAttribute('data-lucide', 'x');
+  }
+  lucide.createIcons(); // Refrescar iconos de Lucide
+});
+
+// Cerrar el menú automáticamente cuando el usuario hace click en una sección (Inicio, RSVP, etc)
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenuDiv.classList.add('hidden');
+    const icon = mobileBtn.querySelector('i');
+    icon.setAttribute('data-lucide', 'menu');
+    lucide.createIcons();
+  });
+});
+
+// --- MEJORA TRADUCCIÓN MÓVIL ---
+// Modifica tu función switchLanguage existente para que también actualice los botones del móvil
+const originalSwitchLanguage = switchLanguage;
+switchLanguage = function(lang) {
+  originalSwitchLanguage(lang); // Ejecuta lo que ya tenías
+  
+  // Actualiza visualmente los botones de idioma en el menú móvil
+  const esMob = document.getElementById('lang-es-mobile');
+  const plMob = document.getElementById('lang-pl-mobile');
+  
+  if(lang === 'es') {
+    esMob.classList.add('active', 'font-bold');
+    plMob.classList.remove('active', 'font-bold');
+  } else {
+    plMob.classList.add('active', 'font-bold');
+    esMob.classList.remove('active', 'font-bold');
+  }
+};
   </script>
 </body>
 </html>
