@@ -140,6 +140,20 @@ h1 .font-script-hero + .font-script-hero {
   font-size: 0.8em;
   opacity: 0.9;
 }
+/* ============================================= */
+/* AJUSTE ESPECÍFICO PARA MÓVIL - FOTO PORTADA   */
+/* ============================================= */
+@media (max-width: 768px) {
+  .hero-image {
+    object-fit: contain !important;
+    object-position: center center;
+  }
+  
+  /* Opcional: un poquito más de espacio arriba/abajo si quieres */
+  #inicio {
+    height: 92vh !important;
+  }
+}
   </style>
 </head>
 <body class="antialiased">
