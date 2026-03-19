@@ -1106,6 +1106,15 @@ switchLanguage = function(lang) {
   } else {
     plMob.classList.add('active', 'font-bold');
     esMob.classList.remove('active', 'font-bold');
+    // Cerrar menú móvil automáticamente
+const mobileMenu = document.getElementById('mobile-menu');
+if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+  mobileMenu.classList.add('hidden');
+
+  const icon = document.querySelector('#mobile-menu-btn i');
+  icon.setAttribute('data-lucide', 'menu');
+  lucide.createIcons();
+}
   }
 };
   </script>
