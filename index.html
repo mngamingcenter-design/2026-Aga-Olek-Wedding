@@ -93,35 +93,46 @@
 
   <!-- Header -->
   <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-4">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center gap-3">
-          <i data-lucide="heart" class="w-6 h-6 text-white header-icon transition-colors duration-300"></i>
-          <div>
-            <h1 class="text-xl font-bold font-heading text-white header-text transition-colors duration-300">Aga & Olek</h1>
-            <p class="text-sm font-body text-white/90 header-subtext transition-colors duration-300">#Aga&Olek2026❤️</p>
-          </div>
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <i data-lucide="heart" class="w-6 h-6 text-white header-icon"></i>
+        <div>
+          <h1 class="text-xl font-bold font-heading text-white header-text">Aga & Olek</h1>
+          <p class="text-sm font-body text-white/90 header-subtext">#Aga&Olek2026❤️</p>
         </div>
+      </div>
 
-        <nav class="hidden md:flex items-center gap-8">
-          <a href="#inicio" data-i18n="nav.home" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Inicio</a>
-          <a href="#itinerario" data-i18n="nav.program" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Programa</a>
-          <a href="#rsvp" data-i18n="nav.rsvp" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">RSVP</a>
-          <a href="#informacion" data-i18n="nav.info" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Información</a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#inicio" data-i18n="nav.home" class="text-white hover:text-primary header-link">Inicio</a>
+        <a href="#itinerario" data-i18n="nav.program" class="text-white hover:text-primary header-link">Programa</a>
+        <a href="#rsvp" data-i18n="nav.rsvp" class="text-white hover:text-primary header-link">RSVP</a>
+        <div class="flex items-center gap-2 pl-6 border-l border-white/30 ml-6">
+          <button onclick="switchLanguage('es')" id="lang-es" class="lang-btn active text-white">ES</button>
+          <span class="text-white/50">/</span>
+          <button onclick="switchLanguage('pl')" id="lang-pl" class="lang-btn text-white">PL</button>
+        </div>
+      </nav>
 
-          <div class="flex items-center gap-2 pl-6 border-l border-white/30 ml-6">
-            <button type="button" onclick="switchLanguage('es')" id="lang-es" class="lang-btn active text-white text-sm font-medium">ES</button>
-            <span class="text-white/50">/</span>
-            <button type="button" onclick="switchLanguage('pl')" id="lang-pl" class="lang-btn text-white text-sm font-medium">PL</button>
-          </div>
-        </nav>
+      <button id="mobile-menu-btn" class="md:hidden text-white header-icon">
+        <i data-lucide="menu" class="w-8 h-8"></i>
+      </button>
+    </div>
+  </div>
 
-        <button id="mobile-menu-btn" class="md:hidden text-white header-icon transition-colors duration-300">
-          <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-border absolute w-full left-0 top-full p-6 shadow-xl">
+    <div class="flex flex-col gap-4 text-center">
+      <a href="#inicio" data-i18n="nav.home" class="text-secondary text-lg py-2">Inicio</a>
+      <a href="#itinerario" data-i18n="nav.program" class="text-secondary text-lg py-2">Programa</a>
+      <a href="#rsvp" data-i18n="nav.rsvp" class="text-secondary text-lg py-2">RSVP</a>
+      <div class="flex justify-center gap-4 pt-4 border-t border-border">
+        <button onclick="switchLanguage('es')" id="lang-es-mobile" class="lang-btn text-secondary font-bold">ES</button>
+        <span class="text-border">|</span>
+        <button onclick="switchLanguage('pl')" id="lang-pl-mobile" class="lang-btn text-secondary">PL</button>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
   <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
