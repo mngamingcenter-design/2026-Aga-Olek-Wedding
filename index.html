@@ -472,7 +472,7 @@ h1 .font-script-hero + .font-script-hero {
         <!-- Status Messages -->
         <div id="rsvp-success" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
           <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600"></i>
-          <p class="text-green-800 font-body">¡Gracias! Tu respuesta ha sido enviada correctamente.</p>
+          <p data-i18n="rsvp.success" class="text-green-800 font-body">¡Gracias! Tu respuesta ha sido enviada correctamente.</p>
         </div>
         <div id="rsvp-error" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3">
           <i data-lucide="alert-circle" class="w-5 h-5 text-red-600"></i>
@@ -1036,8 +1036,9 @@ function toggleAllergyInput(select, id) {
       const btn = document.getElementById(btnId);
       const originalText = btn.innerText;
       
-      btn.innerText = 'Enviando...';
+      const lang = document.documentElement.lang || 'es';
       btn.disabled = true;
+      btn.innerText = translations[lang]['rsvp.form.sending'];
 
       try {
         let data = { attending };
