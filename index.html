@@ -461,8 +461,8 @@ h1 .font-script-hero + .font-script-hero {
 
         <!-- Form for Not Attending -->
         <div id="rsvp-form-no" class="hidden text-center space-y-6 mt-6">
-          <p class="text-xl text-secondary/80 font-body">Lamentamos que no puedas acompañarnos en nuestro día especial.</p>
-          <p class="text-lg text-muted-foreground font-body italic">¡Estarás en nuestros pensamientos!</p>
+          <p data-i18n="rsvp.no.message1" class="text-xl text-secondary/80 font-body">Lamentamos que no puedas acompañarnos en nuestro día especial.</p>
+          <p data-i18n="rsvp.no.message2" class="text-lg text-muted-foreground font-body italic">¡Estarás en nuestros pensamientos!</p>
           <div class="flex gap-4 pt-4">
             <button type="button" onclick="resetRSVP()" class="btn-outline flex-1"><span data-i18n="common.back">Volver</span></button>
             <button onclick="submitRSVP(event, false)" class="btn-primary flex-1" id="submit-btn-no"><span data-i18n="rsvp.form.send">Confirmar asistencia</span></button>
@@ -705,7 +705,9 @@ const translations = {
       "rsvp.form.sending": "Enviando...",
       "rsvp.success": "¡Gracias! Tu respuesta ha sido enviada correctamente.",
       "rsvp.error": "Hubo un error al enviar tu respuesta.",
+      "rsvp.no.message1": "Lamentamos que no puedas acompañarnos en nuestro día especial.",
       "info.title": "Información Adicional",
+      "rsvp.no.message2": "¡Estarás en nuestros pensamientos!",
       "info.gallery.title": "Galería de Fotos",
       "info.gallery.desc": "Aunque tenemos nuestro propio fotógrafo, te animamos a que compartas tus fotos.",
       "info.gallery.qr": "✧Escanea el código QR para subir tus fotos y videos del día✧",
@@ -765,7 +767,9 @@ const translations = {
       "rsvp.form.info": "Twoje dane",
       "rsvp.yes": "Tak, będę obecny / obecna",
       "rsvp.no": "Niestety nie będę mógł / mogła uczestniczyć",
-
+      "rsvp.no.message2": "Będziesz obecny w naszych myślach!",
+      
+      "rsvp.no.message1": "Bardzo nam przykro, że nie możesz towarzyszyć nam w tym wyjątkowym dniu.",
       "rsvp.form.name": "Imię i nazwisko *",  
       "rsvp.form.companions": "Ilu gości będzie Ci towarzyszyć?",
       
