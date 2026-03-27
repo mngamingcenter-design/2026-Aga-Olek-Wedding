@@ -570,6 +570,33 @@ Mario Alejandro    +34- 603 126 569
 </p>
 
 </div>
+<!-- Video YouTube con miniatura personalizada -->
+<div class="bg-white rounded-xl p-8 shadow-elegant border border-border fade-in mt-8">
+  <div class="flex items-center gap-4 mb-6">
+    <i data-lucide="youtube" class="w-6 h-6 text-primary"></i>
+    <h3 data-i18n="video.title" class="text-2xl font-medium text-secondary font-heading">Video de la Boda</h3>
+  </div>
+  
+  <div class="relative group cursor-pointer rounded-xl overflow-hidden shadow-md" id="video-container">
+    <!-- Miniatura - reemplaza TU_ID_DEL_VIDEO con el ID de tu video -->
+    <img 
+      src="https://img.youtube.com/vi/TU_ID_DEL_VIDEO/maxresdefault.jpg" 
+      alt="Video preview" 
+      class="w-full h-auto transition-transform duration-300 group-hover:scale-105"
+      id="video-thumbnail"
+    >
+    <!-- Botón de play overlay -->
+    <div class="absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity group-hover:bg-black/40">
+      <div class="bg-white/90 rounded-full p-4 shadow-lg transform transition-transform group-hover:scale-110">
+        <i data-lucide="play" class="w-12 h-12 text-primary fill-primary"></i>
+      </div>
+    </div>
+  </div>
+  
+  <p data-i18n="video.caption" class="text-sm text-muted-foreground font-body mt-4 text-center italic">
+    ✧ Haz clic para ver nuestro video ✧
+  </p>
+</div>
       </div>
 
 
