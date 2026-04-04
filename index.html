@@ -226,14 +226,29 @@
     <div class="absolute inset-0">
       <!-- Imagen de fondo borrosa para efecto -->
       <picture>
-        <source media="(max-width: 768px)" srcset="https://i.ibb.co/r2BVK7yJ/IMGnew.png" class="hero-image-mobile">
-        <source media="(min-width: 769px)" srcset="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg">
-        <img src="https://i.ibb.co/r2BVK7yJ/imagen-nueva.png" alt="Agnieszka & Mario Alejandro" class="w-full h-full object-cover">
+        <!-- Imagen para escritorio (se mantiene igual) -->
+<img src="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg" 
+  class="hidden md:block w-full h-full object-cover"
+  alt="Agnieszka & Mario Alejandro">
+
+<!-- Imagen para móvil (con control de posición - SOLO ESTA SE MUEVE) -->
+<div class="block md:hidden w-full h-full overflow-hidden relative">
+  <img src="https://i.ibb.co/nMFBJ95s/IMG-nueva.png" 
+    class="absolute w-full h-full"
+    style="
+      object-fit: cover;
+      width: 120%;
+      height: 120%;
+      left: 0%;
+      top: -20%;
+    "alt="Agnieszka & Mario Alejandro">
+    </div>
+    
       </picture>
       <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/80"></div>
     </div>
 
-    <div class="relative z-10 text-center px-5 sm:px-8 max-w-4xl mx-auto fade-in pt-12 md:pt-0">
+    <div class="relative z-10 text-center px-5 sm:px-8 max-w-4xl mx-auto fade-in" style="padding-top: 15rem;">
       <div class="mb-8">
         <div class="mb-6 md:mb-10">
           <span class="text-4xl md:text-6xl text-primary/80">✧</span>
