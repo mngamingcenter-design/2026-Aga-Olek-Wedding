@@ -396,6 +396,17 @@
       width: 24px;
       border-radius: 4px;
     }
+
+      /* Efecto táctil para móvil en tarjetas de itinerario */
+    .bg-white.rounded-xl {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+.bg-white.rounded-xl:active {
+  transform: scale(0.98);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
   </style>
 </head>
 <body class="antialiased">
