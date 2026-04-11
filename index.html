@@ -1371,69 +1371,94 @@ Además, en lugar de regalos convencionales, estaremos muy agradecidos por vuest
         "common.yes": "Tak",
         "common.no": "Nie",
         "common.back": "Powrót"
+        }
+      };
+
+      function switchLanguage(lang) {
+      // Cambiar el atributo lang del HTML
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute('lang', lang);
+
+      // Actualizar botones activos (escritorio y móvil)
+      const buttons = ['lang-es', 'lang-pl', 'lang-es-mobile', 'lang-pl-mobile'];
+      buttons.forEach(id => {
+      const btn = document.getElementById(id);
+        if (btn) btn.classList.toggle('active', id.includes(lang));
+      });
+
+      // Traducir textos estáticos
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+        el.textContent = translations[lang][key];
       }
-    };
+    });
 
-    function switchLanguage(lang) {
-  // Cambiar el atributo lang del HTML
-  document.documentElement.lang = lang;
-  document.documentElement.setAttribute('lang', lang);
+      // Traducir placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+        el.placeholder = translations[lang][key];
+      }
+    });
 
-  // Actualizar botones activos (escritorio y móvil)
-  const buttons = ['lang-es', 'lang-pl', 'lang-es-mobile', 'lang-pl-mobile'];
-  buttons.forEach(id => {
-    const btn = document.getElementById(id);
-    if (btn) btn.classList.toggle('active', id.includes(lang));
-  });
-
-  // Traducir textos estáticos
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
-    }
-  });
-
-  // Traducir placeholders
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    if (translations[lang] && translations[lang][key]) {
-      el.placeholder = translations[lang][key];
-    }
-  });
-
-  // 🔥 NUEVO: Cerrar el menú móvil automáticamente después de cambiar idioma
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileBtnIcon = document.querySelector('#mobile-menu-btn i');
+      // 🔥 NUEVO: Cerrar el menú móvil automáticamente después de cambiar idioma
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileBtnIcon = document.querySelector('#mobile-menu-btn i');
   
-  if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-    mobileMenu.classList.add('hidden');
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
     
-    // Cambiar el ícono de vuelta a "menu" (hamburguesa)
-    if (mobileBtnIcon) {
+        // Cambiar el ícono de vuelta a "menu" (hamburguesa)
+        if (mobileBtnIcon) {
       mobileBtnIcon.setAttribute('data-lucide', 'menu');
       lucide.createIcons(); // Refrescar el ícono
-    }
-  }
-
-  // Forzar actualización del cronómetro
-  updateCountdown();
-}
-    
-    function toggleMap(mapId) {
-      const mapContainer = document.getElementById(mapId);
-      const button = mapContainer.previousElementSibling;
-      const lang = document.documentElement.lang || 'es';
-      const defaultKey = (mapId === 'map-iglesia') ? 'prog.map.church' : 'prog.map.recep';
-      
-      if (mapContainer.classList.contains('hidden')) {
-        mapContainer.classList.remove('hidden');
-        button.innerHTML = `<i data-lucide="map-pin" class="w-5 h-5"></i> ${translations[lang]['prog.map.hide']}`;
-      } else {
-        mapContainer.classList.add('hidden');
-        button.innerHTML = `<i data-lucide="map-pin" class="w-5 h-5"></i> ${translations[lang][defaultKey]}`;
+        }
       }
+
+        // Forzar actualización del cronómetro
+      updateCountdown();
+      }
+    
+      function toggleMap(mapId) {
+    const mapContainer = document.getElementById(mapId);
+    const button = mapContainer.previousElementSibling;
+    const lang = document.documentElement.lang || 'es';
+    const defaultKey = (mapId === 'map-iglesia') ? 'prog.map.church' : 'prog.map.recep';
+  
+        if (mapContainer.classList.contains('hidden')) {
+        // Abrir mapa
+      mapContainer.classList.remove('hidden');
+      button.innerHTML = `<i data-lucide="map-pin" class="w-5 h-5"></i> ${translations[lang]['prog.map.hide']}`;
+        lucide.createIcons();
+    
+        // Función para cerrar al hacer clic fuera
+      function closeMapOnOutsideClick(event) {
+        // Si el clic NO es dentro del mapa Y NO es en el botón que abrió
+        if (!mapContainer.contains(event.target) && !button.contains(event.target)) {
+        closeMap();
+      }
+    }
+    
+    function closeMap() {
+      mapContainer.classList.add('hidden');
+      button.innerHTML = `<i data-lucide="map-pin" class="w-5 h-5"></i> ${translations[lang][defaultKey]}`;
       lucide.createIcons();
+      // Limpiar evento
+      document.removeEventListener('click', closeMapOnOutsideClick);
+    }
+    
+    // Esperar un ciclo para evitar que el clic actual cierre el mapa inmediatamente
+    setTimeout(() => {
+      document.addEventListener('click', closeMapOnOutsideClick);
+    }, 100);
+    
+      } else {
+    // Cerrar mapa manualmente (botón)
+    mapContainer.classList.add('hidden');
+    button.innerHTML = `<i data-lucide="map-pin" class="w-5 h-5"></i> ${translations[lang][defaultKey]}`;
+    lucide.createIcons();
+     }
     }
 
     // Scroll Animations
