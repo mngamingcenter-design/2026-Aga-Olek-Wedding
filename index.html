@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
+  <!-- Título y descripción principal -->
   <title data-i18n="page.title">Agnieszka & Mario Alejandro - Boda 18 Septiembre 2026</title>
-  <meta name="description" content="Te invitamos a celebrar nuestra boda el viernes 18 de septiembre de 2026. Agnieszka Bonikowska y Mario Alejandro Aguirre Bolivar.">
+  <meta name="description" content="Te invitamos a celebrar nuestra boda el viernes 18 de septiembre de 2026. Agnieszka Bonikowska y Mario Alejandro Aguirre Bolivar. ¡Confirma tu asistencia!">
+  <meta name="keywords" content="boda, wedding, Agnieszka, Mario, Zielona Góra, Polonia, septiembre 2026">
+  <meta name="author" content="Agnieszka Bonikowska & Mario Alejandro Aguirre Bolivar">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="es">
+  
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tusitio.com/">
+  <meta property="og:title" content="Agnieszka & Mario Alejandro - Nuestra Boda">
+  <meta property="og:description" content="18 de septiembre 2026 - Te esperamos en Zielona Góra para celebrar nuestro amor. Confirma tu asistencia.">
+  <meta property="og:image" content="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Boda Aga & Olek">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agnieszka & Mario Alejandro - Nuestra Boda">
+  <meta name="twitter:description" content="18 de septiembre 2026 - Te esperamos en Zielona Góra para celebrar nuestro amor.">
+  <meta name="twitter:image" content="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg">
+  
+  <!-- WhatsApp / Mensajería -->
+  <meta property="og:image:alt" content="Agnieszka y Mario Alejandro - Pareja feliz">
+
+  <!-- ===== OPTIMIZACIÓN DE CARGA ===== -->
+  <!-- Preconnect para dominios externos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://i.ibb.co">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  
+  <!-- Preload de la imagen principal (hero) para móvil y escritorio -->
+  <link rel="preload" as="image" href="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg" media="(min-width: 768px)">
+  <link rel="preload" as="image" href="https://i.ibb.co/r2BVK7yJ/IMGnew.png" media="(max-width: 767px)">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -132,10 +170,6 @@
       background: hsl(33, 24%, 44%);
       border-radius: 10px;
     }
-    .carousel-slide {
-      flex: 0 0 100%;
-      scroll-snap-align: start;
-    }
     .carousel-btn {
       position: absolute;
       top: 50%;
@@ -163,115 +197,312 @@
       background: hsl(33, 24%, 44%);
       width: 1.5rem;
     }
-    /* Control de posición para imagen móvil */
-    .hero-image-mobile {
-      object-position: center 50% 50%;
+    
+    .carousel-slide img {
+      width: auto;
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+    }
+        /* Optimización de rendimiento */
+    img {
+      content-visibility: auto;
+    }
+
+        /* Estilos mejorados para el selector de idioma */
+    .language-selector {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Estado cuando el header está scrolleado (fondo blanco) */
+    header.scrolled .language-selector {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+    
+    header.scrolled .language-selector .lang-btn {
+      color: hsl(33, 24%, 44%); /* Color primary de tu web */
+    }
+    
+    header.scrolled .language-selector .lang-btn.active {
+      color: hsl(33, 24%, 44%);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    
+    header.scrolled .language-selector .lang-separator {
+      color: rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Estado normal (header transparente) */
+    .language-selector .lang-btn {
+      color: white;
+    }
+    
+    .language-selector .lang-btn.active {
+      color: white;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    
+    .language-selector .lang-separator {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Hover effects */
+    .language-selector .lang-btn:hover {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
+    
+    /* Versión móvil: más compacto */
+     @media (max-width: 768px) {
+      .language-selector {
+        padding: 0.375rem 0.75rem;
+      }
+      .language-selector .lang-btn {
+        font-size: 0.875rem;
+        padding: 0 0.5rem;
+      }
+    }
+
+     .carousel-dot {
+       width: 10px;
+       height: 10px;
+      }
+      .carousel-dot.active {
+      width: 28px;
+    }
+
+        /* Mejoras de contraste para accesibilidad */
+    
+    /* Asegurar contraste mínimo en textos sobre fondo blanco */
+    .bg-white .text-secondary,
+    .bg-white .text-secondary\/80,
+    .bg-white .text-secondary\/70 {
+      color: #2c2c2c !important; /* Contraste > 4.5:1 */
+    }
+    
+    /* Textos sobre fondos claros */
+    .bg-accent\/30 .text-secondary,
+    .bg-accent\/20 .text-secondary {
+      color: #2c2c2c;
+    }
+    
+    /* Links en hover con indicación visual adicional */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid hsl(33, 24%, 44%);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    
+    /* Mejor contraste para textos pequeños */
+    .text-muted-foreground {
+      color: #5a5a5a; /* Más oscuro que el original */
+    }
+    
+    /* Indicador visual para focus en móvil */
+    @media (max-width: 768px) {
+      a:active, button:active {
+        opacity: 0.7;
+      }
+    }  
+           
+    /* Fondo BLUR - usando backdrop-filter (puro CSS, 0 imágenes) */
+    .carousel-slide .carousel-blur-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px);
+      transform: scale(1.05);
+      opacity: 0.85;
+    }
+    
+    /* Superposición cálida (opcional - da calidez al blur) */
+    .carousel-slide .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(210, 180, 140, 0.15) 0%,
+        rgba(160, 130, 90, 0.1) 100%
+      );
+      z-index: 5;
+    }
+    
+    /* Imagen principal nítida */
+    .carousel-slide .carousel-image {
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+    
+    .carousel-slide:hover .carousel-image {
+      transform: scale(1.02);
+    }
+    .carousel-slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      background-color: #f5f1e8;
+    }
+
+    /* Para móvil - ajuste de aspecto */
+     .carousel-slide {
+  min-height: auto;
+     }
+
+    .carousel-slide .relative.z-10 {
+      position: relative;
+      height: auto;
+      min-height: auto;
+      padding: 1rem;
+    }
+    
+    /* Mejora de los botones del carrusel */
+    .carousel-btn {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .carousel-btn:hover {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+    }
+    
+    /* Dots mejorados */
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .carousel-dot.active {
+      background: hsl(33, 24%, 44%);
+      width: 24px;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body class="antialiased">
+  
+  <!-- Skip to content link para lectores de pantalla -->
+  <a href="#inicio" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-white focus:p-3 focus:rounded-lg">
+    Saltar al contenido principal</a>
 
-  <!-- Header -->
-  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-4">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center gap-3">
-          <i data-lucide="heart" class="w-6 h-6 text-white header-icon transition-colors duration-300"></i>
-          <div>
-            <h1 class="text-xl font-bold font-heading text-white header-text transition-colors duration-300">Aga & Olek</h1>
-            <p class="text-sm font-body text-white/90 header-subtext transition-colors duration-300">#Aga&Olek2026❤️</p>
-          </div>
+  <!-- Header - Versión COMPLETA (Web + Móvil) -->
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-3 md:py-4">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between">
+      
+      <!-- Logo izquierda (SIEMPRE visible) -->
+      <div class="flex items-center gap-2">
+        <i data-lucide="heart" class="w-5 h-5 md:w-6 md:h-6 text-white header-icon transition-colors duration-300"></i>
+        <div>
+          <h1 class="text-lg md:text-xl font-bold font-heading text-white header-text transition-colors duration-300">Aga & Olek</h1>
+          <p class="text-xs md:text-sm font-body text-white/90 header-subtext transition-colors duration-300 hidden sm:block">#Aga&Olek2026❤️</p>
         </div>
-
-        <nav class="hidden md:flex items-center gap-8">
-          <a href="#inicio" data-i18n="nav.home" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Inicio</a>
-          <a href="#mensaje" data-i18n="nav.message" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Mensaje</a>
-          <a href="#historia" data-i18n="nav.story" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Historia</a>
-          <a href="#galeria-nueva" data-i18n="nav.gallery" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Galería</a>
-          <a href="#itinerario" data-i18n="nav.program" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Programa</a>
-          <a href="#rsvp" data-i18n="nav.rsvp" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">RSVP</a>
-          <a href="#informacion" data-i18n="nav.info" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Información</a>
-
-          <div class="flex items-center gap-2 pl-6 border-l border-white/30 ml-6">
-            <button type="button" onclick="switchLanguage('es')" id="lang-es" class="lang-btn active text-white text-sm font-medium">ES</button>
-            <span class="text-white/50">/</span>
-            <button type="button" onclick="switchLanguage('pl')" id="lang-pl" class="lang-btn text-white text-sm font-medium">PL</button>
-          </div>
-        </nav>
-
-        <button id="mobile-menu-btn" class="md:hidden text-white header-icon transition-colors duration-300 z-50 relative">
-          <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
       </div>
-    </div>
-  </header>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg px-6 py-6 space-y-4 fixed top-20 left-0 w-full z-40">
-    <a href="#inicio" data-i18n="nav.home" class="block mobile-link">Inicio</a>
-    <a href="#mensaje" data-i18n="nav.message" class="block mobile-link">Mensaje</a>
-    <a href="#historia" data-i18n="nav.story" class="block mobile-link">Historia</a>
-    <a href="#galeria-nueva" data-i18n="nav.gallery" class="block mobile-link">Galería</a>
-    <a href="#itinerario" data-i18n="nav.program" class="block mobile-link">Programa</a>
-    <a href="#rsvp" data-i18n="nav.rsvp" class="block mobile-link">RSVP</a>
-    <a href="#informacion" data-i18n="nav.info" class="block mobile-link">Información</a>
-    <div class="flex gap-4 pt-4 border-t">
-      <button onclick="switchLanguage('es')" id="lang-es-mobile" class="lang-btn active">ES</button>
-      <button onclick="switchLanguage('pl')" id="lang-pl-mobile" class="lang-btn">PL</button>
+      <!-- Navegación WEB (visible solo en escritorio) -->
+      <nav class="hidden md:flex items-center gap-6 lg:gap-8">
+        <a href="#inicio" data-i18n="nav.home" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Inicio</a>
+        <a href="#mensaje" data-i18n="nav.message" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Mensaje</a>
+        <a href="#historia" data-i18n="nav.story" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Historia</a>
+        <a href="#galeria-nueva" data-i18n="nav.gallery" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Galería</a>
+        <a href="#itinerario" data-i18n="nav.program" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Programa</a>
+        <a href="#rsvp" data-i18n="nav.rsvp" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">RSVP</a>
+        <a href="#informacion" data-i18n="nav.info" class="text-base font-body font-medium text-white hover:text-primary transition-colors header-link">Información</a>
+      </nav>
+
+      <!-- Grupo derecha: Selector de idioma + Menú hamburguesa (móvil) -->
+      <div class="flex items-center gap-3">
+        
+        <!-- Selector de idioma SIEMPRE visible - CON ESTILOS MEJORADOS -->
+      <div class="language-selector flex items-center gap-1 rounded-full px-3 py-1.5 md:px-4 md:py-2 transition-all duration-300" 
+      style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2);">
+      <button onclick="switchLanguage('es')" id="lang-es" 
+        class="lang-btn text-sm md:text-base font-medium px-1.5 transition-colors duration-300" aria-label="Cambiar a español">ES</button>
+      <button onclick="switchLanguage('pl')" id="lang-pl" 
+        class="lang-btn text-sm md:text-base font-medium px-1.5 transition-colors duration-300" aria-label="Zmień na polski">PL</button>
+      </div>
+        
+        <!-- Botón menú hamburguesa (SOLO visible en móvil) -->
+       <button id="mobile-menu-btn" class="md:hidden text-white header-icon"
+       aria-label="Menú de navegación" aria-expanded="false"><i data-lucide="menu" class="w-6 h-6"></i>
+       </button>
+      </div>
     </div>
   </div>
+</header>
 
-  <!-- ==================== SECCIÓN HERO - CON IMAGEN RESPONSIVE ==================== -->
-  <section id="inicio" class="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden">
-    <div class="absolute inset-0">
-      <!-- Imagen de fondo borrosa para efecto -->
-      <picture>
-        <!-- Imagen para escritorio (se mantiene igual) -->
-<img src="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg" 
-  class="hidden md:block w-full h-full object-cover"
-  alt="Agnieszka & Mario Alejandro">
+<!-- Mobile Menu - SOLO para móvil (sin el selector de idioma porque ya está fuera) -->
+<div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl rounded-b-2xl px-6 py-6 space-y-4 fixed top-16 left-4 right-4 z-40">
+  <a href="#inicio" data-i18n="nav.home" class="block py-2 text-secondary font-body text-lg border-b border-gray-100 mobile-link">Inicio</a>
+  <a href="#mensaje" data-i18n="nav.message" class="block py-2 text-secondary font-body text-lg border-b border-gray-100 mobile-link">Mensaje</a>
+  <a href="#historia" data-i18n="nav.story" class="block py-2 text-secondary font-body text-lg border-b border-gray-100 mobile-link">Historia</a>
+  <a href="#galeria-nueva" data-i18n="nav.gallery" class="block py-2 text-secondary font-body text-lg border-b border-gray-100 mobile-link">Galería</a>
+  <a href="#itinerario" data-i18n="nav.program" class="block py-2 text-secondary font-body text-lg border-b border-gray-100 mobile-link">Programa</a>
+  <a href="#rsvp" data-i18n="nav.rsvp" class="block py-2 text-secondary font-body text-lg border-b border-gray-100 mobile-link">RSVP</a>
+  <a href="#informacion" data-i18n="nav.info" class="block py-2 text-secondary font-body text-lg">Información</a>
+</div>
 
-<!-- Imagen para móvil (con control de posición - SOLO ESTA SE MUEVE) -->
-<div class="block md:hidden w-full h-full overflow-hidden relative">
-  <img src="https://i.ibb.co/r2BVK7yJ/IMGnew.png" 
-    class="absolute w-full h-full"
-    style="
-      object-fit: cover;
-      width: 105%;
-      height: 105%;
-      left: 0%;
-      top: -5%;
-    "alt="Agnieszka & Mario Alejandro">
-    </div>
+  <!-- ==================== SECCIÓN HERO - IMAGEN OPTIMIZADA ==================== -->
+<section id="inicio" class="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0">
+    <!-- Imagen para escritorio (cargada con preload) -->
+    <picture>
+      <source media="(min-width: 768px)" srcset="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg">
+      <source media="(max-width: 767px)" srcset="https://i.ibb.co/r2BVK7yJ/IMGnew.png">
+      <img src="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg" 
+           alt="Agnieszka & Mario Alejandro - Nuestra historia de amor"
+           class="w-full h-full object-cover"
+           fetchpriority="high"
+           decoding="async">
+    </picture>
     
-      </picture>
-      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/80"></div>
-    </div>
+    <!-- Gradiente para mejorar legibilidad del texto -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70"></div>
+  </div>
 
-    <div class="relative z-10 text-center px-5 sm:px-8 max-w-4xl mx-auto fade-in" style="padding-top: 17rem;">
-      <div class="mb-8">
-        <div class="mb-6 md:mb-10">
-          <span class="text-4xl md:text-6xl text-primary/80">✧</span>
-        </div>
-        
-        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-wide leading-tight drop-shadow-[0_6px_20px_rgba(0,0,0,0.95)]">
-          <span class="font-script-hero block text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem]">Agnieszka</span>
-          <span class="font-script-hero block text-primary/90 my-2 sm:my-4 text-[3rem] sm:text-[4rem] md:text-[5rem]">&</span>
-          <span class="font-script-hero block text-[2.4rem] sm:text-[3rem] md:text-[4rem]">Mario Alejandro</span>
-        </h1>
+  <div class="relative z-10 text-center px-5 sm:px-8 max-w-4xl mx-auto fade-in" style="padding-top: 15rem;">
+    <div class="mb-8">
+      <div class="mb-6 md:mb-10">
+        <span class="text-4xl md:text-6xl text-primary/80">✧</span>
+      </div>
+      
+      <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-wide leading-tight drop-shadow-[0_6px_20px_rgba(0,0,0,0.95)]">
+        <span class="font-script-hero block text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem]">Agnieszka</span>
+        <span class="font-script-hero block text-primary/90 my-2 sm:my-4 text-[3rem] sm:text-[4rem] md:text-[5rem]">&</span>
+        <span class="font-script-hero block text-[2.4rem] sm:text-[3rem] md:text-[4rem]">Mario Alejandro</span>
+      </h1>
 
-        <div class="inline-block border-t border-b border-white/30 py-4 px-6 sm:px-10 my-6 md:my-10">
-          <p data-i18n="hero.date" class="text-xl sm:text-2xl md:text-3xl text-white font-body tracking-widest">Viernes 18 de septiembre 2026</p>
-        </div>
+      <div class="inline-block border-t border-b border-white/30 py-4 px-6 sm:px-10 my-6 md:my-10">
+        <p data-i18n="hero.date" class="text-xl sm:text-2xl md:text-3xl text-white font-body tracking-widest">Viernes 18 de septiembre 2026</p>
+      </div>
 
-        <p data-i18n="hero.subtitle" class="text-lg sm:text-xl md:text-2xl text-white/90 font-body italic">Nos casamos y queremos celebrarlo contigo</p>
+      <p data-i18n="hero.subtitle" class="text-lg sm:text-xl md:text-2xl text-white/90 font-body italic">Nos casamos y queremos celebrarlo contigo</p>
 
-        <div class="mt-8 md:mt-12">
-          <span class="text-4xl md:text-6xl text-primary/80">✧</span>
-        </div>
+      <div class="mt-8 md:mt-12">
+        <span class="text-4xl md:text-6xl text-primary/80">✧</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Countdown Timer -->
   <section class="w-full py-16 md:py-24 bg-gradient-to-b from-accent/30 to-background">
@@ -347,7 +578,7 @@
             <div class="flex-1">
               <h3 data-i18n="story.meet.title" class="text-2xl font-heading text-center mb-4">✨ Cómo nos conocimos ✨</h3>
               <p data-i18n="story.meet.text1" class="text-lg text-secondary/80 font-body leading-relaxed mb-6">
-                Nuestro camino se cruzó en [lugar] cuando menos lo esperábamos. Desde aquella primera conversación, 
+                Nuestro camino se cruzó  cuando menos lo esperábamos. Desde aquella primera conversación, 
                 supimos que algo especial estaba naciendo. Cada momento compartido fue construyendo esta historia 
                 que hoy celebramos.
               </p>
@@ -366,7 +597,7 @@
               </p>
               <p data-i18n="story.proposal.text2" class="text-lg text-secondary/80 font-body leading-relaxed mb-6">
                 Mario Alejandro:
-                Recuerdo que practicaba a solas las palabras que queria que escuche y que sepa que  hablaba con el corazon.
+                Recuerdo que practicaba a solas las palabras que queria que escuche y que sepa que hablaba con el corazon.
                 En un viaje a "Montenegro" visitamos 3 ciudades, no me sentia tan contento en proponerle matrimonio en esas dos primeras ciudades,
                 pero la ultima ciudad "Budva" fue el mejor lugar, en la playa, con el sonido del mar, bailando como dos almas que se olvidan del mundo 
                 por que solo se necesitan del uno al otro... el corazon me latia muy rapido.. y supe que el momento de las palabras que estuve practicando
@@ -401,268 +632,194 @@
     </div>
   </section>
 
-  <!-- ==================== NUEVA SECCIÓN: GALERÍA DE RECUERDOS (CARRUSEL 6 FOTOS) ==================== -->
-  <section id="galeria-nueva" class="w-full py-16 md:py-24 bg-white">
-    <div class="container mx-auto px-4 max-w-6xl">
-      <div class="text-center mb-12 fade-in">
-        <div class="flex items-center justify-center gap-4 mb-4">
-          <span class="text-xl md:text-2xl text-primary/60">✧</span>
-          <h2 data-i18n="gallery.title" class="text-3xl md:text-5xl font-medium text-secondary font-heading tracking-wide">Galería de recuerdos</h2>
-          <span class="text-xl md:text-2xl text-primary/60">✧</span>
-        </div>
-        <p data-i18n="gallery.subtitle" class="text-lg text-muted-foreground font-body">Momentos que atesoramos para siempre</p>
+  <!-- ==================== GALERÍA CON BLUR CSS OPTIMIZADO ==================== -->
+<section id="galeria-nueva" class="w-full py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div class="text-center mb-12 fade-in">
+      <div class="flex items-center justify-center gap-4 mb-4">
+        <span class="text-xl md:text-2xl text-primary/60">✧</span>
+        <h2 data-i18n="gallery.title" class="text-3xl md:text-5xl font-medium text-secondary font-heading tracking-wide">Galería de recuerdos</h2>
+        <span class="text-xl md:text-2xl text-primary/60">✧</span>
       </div>
-
-      <!-- Carrusel de 6 fotos -->
-      <div class="carousel-container relative max-w-4xl mx-auto rounded-xl shadow-elegant fade-in">
-        <div class="carousel-track" id="carouselTrack">
-
-          <!-- Foto 1 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg" class="w-full h-auto object-contain" style="max-height: 500px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-      
-          <!-- Foto 2 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/JR8P0fGt/IMG-0840.avif" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/JR8P0fGt/IMG-0840.avif" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-          <!-- Foto 3 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/CKC1DhH9/7So-YV.jpg" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/CKC1DhH9/7So-YV.jpg" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-          <!-- Foto 4 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/d04VkN7X/IMG-0570.jpg" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/d04VkN7X/IMG-0570.jpg" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-          <!-- Foto 5 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/8Lg0FBdX/IMG-1479.avif" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/8Lg0FBdX/IMG-1479.avif" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-          <!-- Foto 6 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/JR7s65qk/IMG-9458.avif" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/JR7s65qk/IMG-9458.avif" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-
-          <!-- Foto 7 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/20BYD1H8/IMG-9246.avif" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/20BYD1H8/IMG-9246.avif" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-
-          <!-- Foto 8 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/R4VqXsdS/IMG-0855.avif" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/R4VqXsdS/IMG-0855.avif" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-
-          <!-- Foto 9 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/VcFDHS8B/BWDX6266.jpg" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/VcFDHS8B/BWDX6266.jpg" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-
-          <!-- Foto 10 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/0j2H5SCL/IMG-1092.avif" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/0j2H5SCL/IMG-1092.avif" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-
-          <!-- Foto 11 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/Dg6193dQ/IMG-1142.avif" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/Dg6193dQ/IMG-1142.avif" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-
-          <!-- Foto 12 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/MkCFh6mp/IMG-0752.avif" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/MkCFh6mp/IMG-0752.avif" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-
-          <!-- Foto 13 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/N6L0HqxF/IMG-5408.avif" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/N6L0HqxF/IMG-5408.avif" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-
-          <!-- Foto 14 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/tPJyMRYN/IMG-5789.avif" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/tPJyMRYN/IMG-5789.avif" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-
-          <!-- Foto 15 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/mVHPwztc/TWRQ2616.jpg" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/mVHPwztc/TWRQ2616.jpg" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-
-          <!-- Foto 16 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/jvNmZk7B/IMG-3590.avif" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/jvNmZk7B/IMG-3590.avif" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-
-          <!-- Foto 17 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/DfDb78nY/Lbb-YV.jpg" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/DfDb78nY/Lbb-YV.jpg" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-
-          <!-- Foto 18 -->
-          <div class="carousel-slide">
-          <div class="relative w-full overflow-hidden" style="background-color: #f5f1e8; min-height: 700px;"> 
-          <div class="absolute inset-0 scale-110">
-          <img src="https://i.ibb.co/nMZGbrpz/IMG-party.jpg" class="w-full h-full object-cover" style="filter: blur(12px); opacity: 0.9;" alt="Fondo difuminado">
-        </div>
-
-          <div class="relative z-10 flex items-center justify-center p-6 md:p-8">
-          <img src="https://i.ibb.co/nMZGbrpz/IMG-party.jpg" class="w-full h-auto object-contain" style="max-height: 600px; width: 100%;" alt="Recuerdo">
-        </div>
-       </div>
-      </div>
-        </div>
-        
-        <!-- Botones de navegación -->
-        <button id="prevBtn" class="carousel-btn left-4">
-          <i data-lucide="chevron-left" class="w-6 h-6 text-primary"></i>
-        </button>
-        <button id="nextBtn" class="carousel-btn right-4">
-          <i data-lucide="chevron-right" class="w-6 h-6 text-primary"></i>
-        </button>
-        
-        <!-- Dots de navegación -->
-        <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10" id="carouselDots"></div>
-      </div>
-      
-      <p data-i18n="gallery.footer" class="text-center text-sm text-muted-foreground mt-6 font-body italic">✧ Desliza para ver más momentos especiales ✧</p>
+      <p data-i18n="gallery.subtitle" class="text-lg text-muted-foreground font-body">Momentos que atesoramos para siempre</p>
     </div>
-  </section>
+
+    <!-- Carrusel con efecto BLUR CSS (sin imágenes duplicadas) -->
+    <div class="carousel-container relative max-w-4xl mx-auto rounded-xl shadow-elegant fade-in">
+      <div class="carousel-track" id="carouselTrack">
+        
+        <!-- Slide 1 -->
+        <div class="carousel-slide relative">
+          <div class="carousel-blur-bg"></div>
+          <div class="carousel-overlay"></div>
+          <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
+            <img src="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg" 
+                 class="carousel-image w-full h-auto max-h-[70vh] md:max-h-[500px] object-contain rounded-lg shadow-lg" 
+                 loading="lazy" 
+                 decoding="async"
+                 alt="Agnieszka y Mario Alejandro - momento especial">
+          </div>
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="carousel-slide relative">
+          <div class="carousel-blur-bg"></div>
+          <div class="carousel-overlay"></div>
+          <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
+            <img src="https://i.ibb.co/JR8P0fGt/IMG-0840.avif" 
+                 class="carousel-image w-full h-auto max-h-[70vh] md:max-h-[500px] object-contain rounded-lg shadow-lg" 
+                 loading="lazy" 
+                 decoding="async"
+                 alt="Pareja feliz - recuerdo de viaje">
+          </div>
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="carousel-slide relative">
+          <div class="carousel-blur-bg"></div>
+          <div class="carousel-overlay"></div>
+          <div class="relative z-10 flex items-center justify-center" style="min-height: 500px;">
+            <img src="https://i.ibb.co/CKC1DhH9/7So-YV.jpg" 
+                 class="carousel-image w-full h-auto max-h-[450px] md:max-h-[500px] object-contain rounded-lg shadow-lg" 
+                 loading="lazy" 
+                 decoding="async"
+                 alt="Momento romántico juntos">
+          </div>
+        </div>
+        
+        <!-- Slide 4 -->
+        <div class="carousel-slide relative">
+          <div class="carousel-blur-bg"></div>
+          <div class="carousel-overlay"></div>
+          <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
+            <img src="https://i.ibb.co/JTXFZC7/IMG-M.jpg" 
+                 class="carousel-image w-full h-auto max-h-[70vh] md:max-h-[500px] object-contain rounded-lg shadow-lg" 
+                 loading="lazy" 
+                 decoding="async"
+                 alt="Celebrando nuestro amor">
+          </div>
+        </div>
+        
+        <!-- Slide 5 -->
+        <div class="carousel-slide relative">
+          <div class="carousel-blur-bg"></div>
+          <div class="carousel-overlay"></div>
+          <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
+            <img src="https://i.ibb.co/CKXzD6XF/IMG-4524.jpg" 
+                 class="carousel-image w-full h-auto max-h-[450px] md:max-h-[500px] object-contain rounded-lg shadow-lg" 
+                 loading="lazy" 
+                 decoding="async"
+                 alt="Día especial juntos">
+          </div>
+        </div>
+        
+        <!-- Slide 6 -->
+        <div class="carousel-slide relative">
+          <div class="carousel-blur-bg"></div>
+          <div class="carousel-overlay"></div>
+          <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
+            <img src="https://i.ibb.co/JR7s65qk/IMG-9458.avif" 
+                 class="carousel-image w-full h-auto max-h-[450px] md:max-h-[500px] object-contain rounded-lg shadow-lg" 
+                 loading="lazy" 
+                 decoding="async"
+                 alt="Sonrisas y amor">
+          </div>
+        </div>
+        
+        <!-- Slide 7 -->
+        <div class="carousel-slide relative">
+          <div class="carousel-blur-bg"></div>
+          <div class="carousel-overlay"></div>
+          <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
+            <img src="https://i.ibb.co/20BYD1H8/IMG-9246.avif" 
+                 class="carousel-image w-full h-auto max-h-[450px] md:max-h-[500px] object-contain rounded-lg shadow-lg" 
+                 loading="lazy" 
+                 decoding="async"
+                 alt="Viaje inolvidable">
+          </div>
+        </div>
+        
+        <!-- Slide 8 -->
+        <div class="carousel-slide relative">
+          <div class="carousel-blur-bg"></div>
+          <div class="carousel-overlay"></div>
+          <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
+            <img src="https://i.ibb.co/R4VqXsdS/IMG-0855.avif" 
+                 class="carousel-image w-full h-auto max-h-[450px] md:max-h-[500px] object-contain rounded-lg shadow-lg" 
+                 loading="lazy" 
+                 decoding="async"
+                 alt="Nuestra historia de amor">
+          </div>
+        </div>
+        
+        <!-- Slide 9 -->
+        <div class="carousel-slide relative">
+          <div class="carousel-blur-bg"></div>
+          <div class="carousel-overlay"></div>
+          <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
+            <img src="https://i.ibb.co/mVHPwztc/TWRQ2616.jpg" 
+                 class="carousel-image w-full h-auto max-h-[450px] md:max-h-[500px] object-contain rounded-lg shadow-lg" 
+                 loading="lazy" 
+                 decoding="async"
+                 alt="Playa y arena">
+          </div>
+        </div>
+
+        <!-- Slide 10 -->
+        <div class="carousel-slide relative">
+          <div class="carousel-blur-bg"></div>
+          <div class="carousel-overlay"></div>
+          <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
+            <img src="https://i.ibb.co/spZVpfqf/IMG-B.jpg" 
+                 class="carousel-image w-full h-auto max-h-[70vh] md:max-h-[500px] object-contain rounded-lg shadow-lg" 
+                 loading="lazy" 
+                 decoding="async"
+                 alt="Disneyland y Amor">
+          </div>
+        </div>
+
+        <!-- Slide 11 -->
+        <div class="carousel-slide relative">
+          <div class="carousel-blur-bg"></div>
+          <div class="carousel-overlay"></div>
+          <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
+            <img src="https://i.ibb.co/DfDb78nY/Lbb-YV.jpg" 
+                 class="carousel-image w-full h-auto max-h-[450px] md:max-h-[500px] object-contain rounded-lg shadow-lg" 
+                 loading="lazy" 
+                 decoding="async"
+                 alt="Navidad con Snowman">
+          </div>
+        </div>
+
+        <!-- Slide 12 -->
+        <div class="carousel-slide relative">
+          <div class="carousel-blur-bg"></div>
+          <div class="carousel-overlay"></div>
+          <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
+            <img src="https://i.ibb.co/3YscmzZf/IMG-2026.jpg" 
+                 class="carousel-image w-full h-auto max-h-[450px] md:max-h-[500px] object-contain rounded-lg shadow-lg" 
+                 loading="lazy" 
+                 decoding="async"
+                 alt="Año nuevo 2026 juntos!">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Botones de navegación -->
+      <button id="prevBtn" class="carousel-btn left-2 md:left-4" aria-label="Imagen anterior">
+        <i data-lucide="chevron-left" class="w-5 h-5 md:w-6 md:h-6 text-white drop-shadow-md"></i>
+      </button>
+      <button id="nextBtn" class="carousel-btn right-2 md:right-4" aria-label="Imagen siguiente">
+        <i data-lucide="chevron-right" class="w-5 h-5 md:w-6 md:h-6 text-white drop-shadow-md"></i>
+      </button>
+      
+      <!-- Dots -->
+      <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-3 z-20" id="carouselDots"></div>
+    </div>
+    
+    <p data-i18n="gallery.footer" class="text-center text-sm text-muted-foreground mt-6 font-body italic">✧ Desliza para ver más momentos especiales ✧</p>
+  </div>
+</section>
 
   <!-- SECCIÓN ITINERARIO (existente, se mantiene igual) -->
   <section id="itinerario" class="w-full py-16 md:py-24 bg-white">
@@ -682,7 +839,7 @@
         <div class="space-y-12 md:space-y-16">
           <div class="relative flex items-center md:flex-row fade-in">
             <div class="flex-1 md:pr-16 px-4 md:pl-0">
-              <div class="bg-white rounded-xl p-8 shadow-elegant border border-border hover:border-primary/30 transition-colors duration-500">
+              <div class="bg-white rounded-xl p-8 shadow-elegant border border-border hover:border-primary/30 transition-all duration-500 hover:scale-[1.04]">
                 <div class="flex flex-col md:flex-row items-center md:items-start gap-5 text-center md:text-left">
                   <div class="bg-accent/50 rounded-full p-4 flex-shrink-0 mx-auto md:mx-0">
                     <i data-lucide="church" class="w-6 h-6 text-primary"></i>
@@ -709,7 +866,7 @@
 
           <div class="relative flex items-center md:flex-row-reverse fade-in">
             <div class="flex-1 md:pl-16 px-4 md:pl-0">
-              <div class="bg-white rounded-xl p-8 shadow-elegant border border-border hover:border-primary/30 transition-colors duration-500">
+              <div class="bg-white rounded-xl p-8 shadow-elegant border border-border hover:border-primary/30 transition-all duration-500 hover:scale-[1.04]">
                 <div class="flex flex-col md:flex-row items-center md:items-start gap-5 text-center md:text-left">
                   <div class="bg-accent/50 rounded-full p-4 flex-shrink-0 mx-auto md:mx-0">
                     <i data-lucide="sparkles" class="w-6 h-6 text-primary"></i>
@@ -736,7 +893,7 @@
           
           <div class="relative flex items-center md:flex-row-reverse fade-in">
             <div class="flex-1 md:pl-16 pl-6 md:pl-0">
-              <div class="bg-white rounded-xl p-8 shadow-elegant border border-border hover:border-primary/30 transition-colors duration-500">
+              <div class="bg-white rounded-xl p-8 shadow-elegant border border-border hover:border-primary/30 transition-all duration-500 hover:scale-[1.04]">
                 <div class="flex items-start gap-5">
                   <div class="bg-accent/50 rounded-full p-4 flex-shrink-0">
                     <i data-lucide="music" class="w-6 h-6 text-primary"></i>
@@ -757,7 +914,7 @@
         <div class="flex items-start gap-5">
           <i data-lucide="shirt" class="w-6 h-6 md:w-8 md:h-8 text-primary flex-shrink-0 mt-1"></i>
           <div>
-            <h3 data-i18n="dress.title" class="text-2xl md:text-3xl font-medium text-secondary font-heading mb-4">Código de Vestimenta</h3>
+            <h3 data-i18n="dress.title" class="text-2xl md:text-3xl font-medium text-secondary font-medium mb-4">Código de Vestimenta</h3>
             <p class="text-base md:text-lg text-secondary/80 font-body leading-relaxed">
               <span data-i18n="dress.desc" class="font-medium">Formal, Elegante</span><br />
               <span data-i18n="dress.sub">Vestido y Traje</span>
@@ -771,82 +928,108 @@
     </div>
   </section>
 
-  <!-- RSVP Section (existente) -->
-  <section id="rsvp" class="w-full py-16 md:py-24 bg-gradient-to-b from-background to-accent/30">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <div class="text-center mb-12 fade-in">
-        <div class="flex items-center justify-center gap-4 mb-4">
-          <span class="text-xl md:text-2xl text-primary/60">✧</span>
-          <h2 data-i18n="rsvp.title" class="text-3xl md:text-5xl font-medium text-secondary font-heading tracking-wide">¿Nos acompañarás?</h2>
-          <span class="text-xl md:text-2xl text-primary/60">✧</span>
-        </div>
-        <p data-i18n="rsvp.subtitle">Tu presencia es el mejor regalo</p>
-        <p data-i18n="rsvp.deadline">✧Por Favor confirmar su asistencia antes del 18 de Julio del 2026✧</p>
+  <!-- RSVP Section - VERSIÓN CORREGIDA -->
+<section id="rsvp" class="w-full py-16 md:py-24 bg-gradient-to-b from-background to-accent/30">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="text-center mb-12 fade-in">
+      <div class="flex items-center justify-center gap-4 mb-4">
+        <span class="text-xl md:text-2xl text-primary/60">✧</span>
+        <h2 data-i18n="rsvp.title" class="text-3xl md:text-5xl font-medium text-secondary font-heading tracking-wide">¿Nos acompañarás?</h2>
+        <span class="text-xl md:text-2xl text-primary/60">✧</span>
+      </div>
+      <p data-i18n="rsvp.subtitle" class="text-lg text-muted-foreground font-body mb-2">Tu presencia es el mejor regalo</p>
+      <p data-i18n="rsvp.deadline" class="text-sm text-primary/70 font-body italic">✧ Por favor confirmar su asistencia antes del 18 de Julio del 2026 ✧</p>
+    </div>
+
+    <div class="bg-white rounded-xl p-6 md:p-10 shadow-elegant fade-in">
+      
+      <!-- Botones de selección inicial -->
+      <div id="rsvp-choices" class="grid md:grid-cols-2 gap-6">
+        <button onclick="showRSVPForm(true)" class="btn-primary flex items-center justify-center gap-2 py-4 text-lg">
+          <i data-lucide="heart" class="w-5 h-5"></i><span data-i18n="rsvp.yes">Sí, asistiré</span>
+        </button>
+        <button onclick="showRSVPForm(false)" class="btn-outline py-4 text-lg">
+          <span data-i18n="rsvp.no">No podré asistir</span>
+        </button>
       </div>
 
-      <div class="bg-white rounded-xl p-8 md:p-10 shadow-elegant fade-in">
-        <div id="rsvp-choices" class="grid md:grid-cols-2 gap-6">
-          <button onclick="showRSVPForm(true)" class="btn-primary flex items-center justify-center gap-2 py-4">
-            <i data-lucide="heart" class="w-5 h-5"></i><span data-i18n="rsvp.yes">Sí, asistiré</span>
-          </button>
-          <button onclick="showRSVPForm(false)" class="btn-outline py-4">
-            <span data-i18n="rsvp.no">No podré asistir</span>
-          </button>
+      <!-- FORMULARIO SÍ ASISTIRÉ -->
+      <form id="rsvp-form-yes" class="hidden space-y-6 mt-6" onsubmit="submitRSVP(event, true)">
+        <!-- Nombre principal -->
+        <div>
+          <label class="block text-secondary font-body font-medium mb-2" data-i18n="rsvp.form.name">Tu nombre completo *</label>
+          <input type="text" name="guestName" id="guestName" required 
+                 class="w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                 data-i18n-placeholder="rsvp.form.placeholder.name" placeholder="Nombre y apellido">
+        </div>
+        
+        <!-- Número de acompañantes -->
+        <div>
+          <label class="block text-secondary font-body font-medium mb-2" data-i18n="rsvp.form.companions">¿Cuántos acompañantes traerás?</label>
+          <input type="number" name="companions" id="companions" min="0" max="10" value="0" 
+                 onchange="updateCompanions(parseInt(this.value))"
+                 class="w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50">
         </div>
 
-        <form id="rsvp-form-yes" class="hidden space-y-6 mt-6" onsubmit="submitRSVP(event, true)">
-          <div>
-            <label data-i18n="rsvp.form.name">Tu nombre completo *</label>
-            <input type="text" name="guestName" id="guestName" required class="w-full p-3 border border-border rounded-lg" data-i18n-placeholder="rsvp.form.placeholder.name" placeholder="Nombre y apellido">
+        <!-- Contenedor de acompañantes (se llena dinámicamente) -->
+        <div id="companions-container" class="space-y-4 hidden"></div>
+
+        <!-- Información del invitado principal -->
+        <div class="p-6 bg-accent/20 rounded-lg border border-border space-y-4">
+          <h4 class="text-xl font-heading text-secondary" data-i18n="rsvp.companions.title">"Información de acompañantes"</h4>
+          
+          <div class="flex items-center justify-between">
+            <label class="text-base font-body text-secondary flex items-center gap-2">
+              <i data-lucide="wine" class="w-4 h-4 text-primary"></i>
+              <span data-i18n="rsvp.form.alcohol">¿Consumirás alcohol?</span>
+            </label>
+            <input type="checkbox" name="guestAlcohol" class="w-5 h-5 accent-primary rounded">
           </div>
           
           <div>
-            <label data-i18n="rsvp.form.companions">¿Cuántos acompañantes traerás?</label>
-            <input type="number" name="companions" id="companions" min="0" max="10" value="0" onchange="updateCompanions(this.value)" class="w-full p-3 border border-border rounded-lg">
-          </div>
-
-          <div id="companions-container" class="space-y-4 hidden"></div>
-
-          <div class="p-6 bg-accent/20 rounded-lg border border-border space-y-4">
-            <h4 data-i18n="rsvp.form.info">Tu información</h4>
-            <div class="flex items-center justify-between">
-              <label class="text-base font-body text-secondary flex items-center gap-2">
-                <span data-i18n="rsvp.form.alcohol">¿Consumirás alcohol?</span>
-              </label>
-              <input type="checkbox" name="guestAlcohol" class="w-5 h-5 accent-primary">
-            </div>
-            <div>
-              <label data-i18n="rsvp.form.allergies.label">Alergias o restricciones alimentarias</label>
-              <textarea name="guestAllergies" id="guestAllergies" rows="3" class="w-full p-3 border border-border rounded-lg" data-i18n-placeholder="rsvp.form.placeholder.allergies" placeholder="Especifica si tienes alguna alergia..."></textarea>
-            </div>
-          </div>
-
-          <div class="flex gap-4 pt-4">
-            <button type="button" onclick="resetRSVP()" class="btn-outline flex-1"><span data-i18n="common.back">Volver</span></button>
-            <button type="submit" class="btn-primary flex-1" id="submit-btn-yes"><span data-i18n="rsvp.form.send">Confirmar asistencia</span></button>
-          </div>
-        </form>
-
-        <div id="rsvp-form-no" class="hidden text-center space-y-6 mt-6">
-          <p data-i18n="rsvp.no.message1" class="text-xl text-secondary/80 font-body">Lamentamos que no puedas acompañarnos en nuestro día especial.</p>
-          <p data-i18n="rsvp.no.message2" class="text-lg text-muted-foreground font-body italic">¡Estarás en nuestros pensamientos!</p>
-          <div class="flex gap-4 pt-4">
-            <button type="button" onclick="resetRSVP()" class="btn-outline flex-1"><span data-i18n="common.back">Volver</span></button>
-            <button onclick="submitRSVP(event, false)" class="btn-primary flex-1" id="submit-btn-no"><span data-i18n="rsvp.form.send">Confirmar asistencia</span></button>
+            <label class="block text-secondary font-body font-medium mb-2" data-i18n="rsvp.form.allergies.label">Alergias o restricciones alimentarias</label>
+            <textarea name="guestAllergies" id="guestAllergies" rows="3" 
+                      class="w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      data-i18n-placeholder="rsvp.form.placeholder.allergies" 
+                      placeholder="Especifica si tienes alguna alergia..."></textarea>
           </div>
         </div>
 
-        <div id="rsvp-success" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
-          <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600"></i>
-          <p data-i18n="rsvp.success" class="text-green-800 font-body">¡Gracias! Tu respuesta ha sido enviada correctamente.</p>
+        <!-- Botones de acción -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <button type="button" onclick="resetRSVP()" class="btn-outline flex-1 py-3"><span data-i18n="common.back">Volver</span></button>
+          <button type="submit" class="btn-primary flex-1 py-3" id="submit-btn-yes">
+            <span data-i18n="rsvp.form.send">Confirmar asistencia</span>
+          </button>
         </div>
-        <div id="rsvp-error" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3">
-          <i data-lucide="alert-circle" class="w-5 h-5 text-red-600"></i>
-          <p data-i18n="rsvp.error" class="text-red-800 font-body">Hubo un error al enviar tu respuesta. Por favor, inténtalo de nuevo.</p>
+      </form>
+
+      <!-- FORMULARIO NO ASISTIRÉ -->
+      <div id="rsvp-form-no" class="hidden text-center space-y-6 mt-6">
+        <i data-lucide="heart-off" class="w-16 h-16 text-muted-foreground mx-auto"></i>
+        <p data-i18n="rsvp.no.message1" class="text-xl text-secondary/80 font-body">Lamentamos que no puedas acompañarnos en nuestro día especial.</p>
+        <p data-i18n="rsvp.no.message2" class="text-lg text-muted-foreground font-body italic">¡Estarás en nuestros pensamientos!</p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <button type="button" onclick="resetRSVP()" class="btn-outline flex-1 py-3"><span data-i18n="common.back">Volver</span></button>
+          <button onclick="submitRSVP(event, false)" class="btn-primary flex-1 py-3" id="submit-btn-no">
+            <span data-i18n="rsvp.form.send">Confirmar asistencia</span>
+          </button>
         </div>
       </div>
+
+      <!-- Mensajes de éxito/error -->
+      <div id="rsvp-success" class="hidden mt-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
+        <i data-lucide="check-circle-2" class="w-5 h-5 text-green-600"></i>
+        <p data-i18n="rsvp.success" class="text-green-800 font-body">¡Gracias! Tu respuesta ha sido enviada correctamente.</p>
+      </div>
+      
+      <div id="rsvp-error" class="hidden mt-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3">
+        <i data-lucide="alert-circle" class="w-5 h-5 text-red-600"></i>
+        <p data-i18n="rsvp.error" class="text-red-800 font-body">Hubo un error al enviar tu respuesta. Por favor, inténtalo de nuevo.</p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Additional Info Section (existente) -->
   <section id="informacion" class="py-16 md:py-24 bg-background">
@@ -867,7 +1050,8 @@
           <p data-i18n="info.gallery.qr">✧Escanea el código QR para subir tus fotos y videos del día✧</p>
           <div class="flex justify-center">
             <div class="border-2 border-dashed border-border p-10 rounded-xl text-center">
-              <img src="https://i.ibb.co/fzPxTNpd/knipsmig-event-qr.png" class="w-40 mx-auto mb-4">
+            <img src="https://i.ibb.co/fzPxTNpd/knipsmig-event-qr.png" class="w-40 mx-auto mb-4" loading="lazy" decoding="async"
+            alt="Código QR para compartir fotos de la boda - KnipsMig">
             </div>
           </div>
         </div>
@@ -963,7 +1147,7 @@ Además, en lugar de regalos convencionales, estaremos muy agradecidos por vuest
 
       <div class="border-t border-white/10 pt-8 mt-8">
         <p data-i18n="footer.message">✧ Con todo nuestro amor, esperamos celebrar este día especial contigo! ✧</p>
-        <p class="text-sm text-white/40 mt-6 font-body">© 2026 Aga & Olek Wedding</p>
+        <p class="text-sm text-white/40 mt-6 font-body">© <span id="currentYear"></span> Aga & Olek Wedding</p>
       </div>
     </div>
   </footer>
@@ -1005,7 +1189,7 @@ Además, en lugar de regalos convencionales, estaremos muy agradecidos por vuest
         "story.meet.text3": "Es sin dudas la mejor historia de amor que alguien puede tener en la vida. Dos personas con diferentes culturas, de diferentes continentes, hablando diferentes idiomas, sin duda Dios unio nuestros caminos para que sea un ejemplo a contar del amor puro que dos personas estan dispuesto a dar del uno al otro..",
         "story.proposal.title": "💍 La propuesta 💍",
         "story.proposal.text1": "Fue realmente un dia inovidable. Un 'si' que cambiaria nuestras vidas para siempre.",
-        "story.proposal.text2": "Mario Alejandro: Recuerdo que practicaba a solas las palabras que queria que escuche y ue sepa que  hablaba con el corazon.En un viaje a *Montenegro* visitamos 3 ciudades, no me sentia tan contento en proponerle matrimonio en esas dos primeras ciudades,pero la ultima ciudad *Budva* fue el mejor lugar, en la playa, con el sonido del mar, bailando como dos almas que se olvidan del mundo por que solo se necesitan del uno al otro... el corazon me latia muy rapido.. y supe que el momento de las palabras que estuve practicando tenian que salir de mi boca.. despues de unas bonitas palabras, con muchos nervios y con todo mi amor dije: ''Agnieszka Bonikowska , te gustaria casarte conmigo...'' ",
+        "story.proposal.text2": "Mario Alejandro: Recuerdo que practicaba a solas las palabras que queria que escuche y que sepa que hablaba con el corazon.En un viaje a *Montenegro* visitamos 3 ciudades, no me sentia tan contento en proponerle matrimonio en esas dos primeras ciudades,pero la ultima ciudad *Budva* fue el mejor lugar, en la playa, con el sonido del mar, bailando como dos almas que se olvidan del mundo por que solo se necesitan del uno al otro... el corazon me latia muy rapido.. y supe que el momento de las palabras que estuve practicando tenian que salir de mi boca.. despues de unas bonitas palabras, con muchos nervios y con todo mi amor dije: ''Agnieszka Bonikowska , te gustaria casarte conmigo...'' ",
         "story.proposal.text3": "El resto de la historia se cuenta sola... ❤️",
         "story.proposal.text4": "Agnieszka: ¿Y yo? Aunque Mario intentaba disimular sus nervios valientemente, podía ver en sus ojos que algo se traía entre manos... Cuando pronunció aquellas palabras, el mundo se detuvo por un instante y en mi mente solo había una respuesta.",
         "story.proposal.text5": "Desde ese momento, cada vez que miro mi anillo, todas esas emociones vuelven a mí. No solo veo el brillo de aquella noche en Budva, sino sobre todo nuestro futuro juntos. ",
@@ -1180,7 +1364,9 @@ Además, en lugar de regalos convencionales, estaremos muy agradecidos por vuest
     };
 
     function switchLanguage(lang) {
+  // Cambiar el atributo lang del HTML
   document.documentElement.lang = lang;
+  document.documentElement.setAttribute('lang', lang);
 
   // Actualizar botones activos (escritorio y móvil)
   const buttons = ['lang-es', 'lang-pl', 'lang-es-mobile', 'lang-pl-mobile'];
@@ -1252,40 +1438,63 @@ Además, en lugar de regalos convencionales, estaremos muy agradecidos por vuest
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     // Header Scroll Effect
+    // Header Scroll Effect - MEJORADO (con clase scrolled para idioma)
     const header = document.getElementById('header');
     const headerTexts = document.querySelectorAll('.header-text, .header-subtext, .header-link');
     const headerIcons = document.querySelectorAll('.header-icon');
+
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
-        header.classList.remove('bg-transparent', 'py-4');
-        header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'py-2');
-        headerTexts.forEach(el => { el.classList.remove('text-white'); el.classList.add('text-secondary'); });
-        headerIcons.forEach(el => { el.classList.remove('text-white'); el.classList.add('text-primary'); });
+    header.classList.remove('bg-transparent', 'py-4');
+    header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'py-2', 'scrolled');
+    headerTexts.forEach(el => { el.classList.remove('text-white'); el.classList.add('text-secondary'); });
+    headerIcons.forEach(el => { el.classList.remove('text-white'); el.classList.add('text-primary'); });
       } else {
-        header.classList.add('bg-transparent', 'py-4');
-        header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'py-2');
-        headerTexts.forEach(el => { el.classList.add('text-white'); el.classList.remove('text-secondary'); });
-        headerIcons.forEach(el => { el.classList.add('text-white'); el.classList.remove('text-primary'); });
-      }
-    });
+    header.classList.add('bg-transparent', 'py-4');
+    header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'py-2', 'scrolled');
+    headerTexts.forEach(el => { el.classList.add('text-white'); el.classList.remove('text-secondary'); });
+    headerIcons.forEach(el => { el.classList.add('text-white'); el.classList.remove('text-primary'); });
+    }
+  });
 
-    // Mobile Menu
-    const mobileBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenuDiv = document.getElementById('mobile-menu');
-    mobileBtn.addEventListener('click', () => {
-      mobileMenuDiv.classList.toggle('hidden');
+// Mobile Menu - Mejorado
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const mobileMenuDiv = document.getElementById('mobile-menu');
+let menuOpen = false;
+
+mobileBtn.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  mobileMenuDiv.classList.toggle('hidden', !menuOpen);
+  const icon = mobileBtn.querySelector('i');
+  icon.setAttribute('data-lucide', menuOpen ? 'x' : 'menu');
+  lucide.createIcons();
+});
+
+// Cerrar menú al hacer clic en cualquier enlace
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    menuOpen = false;
+    mobileMenuDiv.classList.add('hidden');
+    const icon = mobileBtn.querySelector('i');
+    icon.setAttribute('data-lucide', 'menu');
+    lucide.createIcons();
+  });
+});
+
+// Cerrar menú al hacer scroll (buena práctica)
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+  if (menuOpen) {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      menuOpen = false;
+      mobileMenuDiv.classList.add('hidden');
       const icon = mobileBtn.querySelector('i');
-      icon.setAttribute('data-lucide', mobileMenuDiv.classList.contains('hidden') ? 'menu' : 'x');
+      icon.setAttribute('data-lucide', 'menu');
       lucide.createIcons();
-    });
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenuDiv.classList.add('hidden');
-        const icon = mobileBtn.querySelector('i');
-        icon.setAttribute('data-lucide', 'menu');
-        lucide.createIcons();
-      });
-    });
+    }, 100);
+  }
+});
 
     // Countdown Timer
     const weddingDate = new Date('2026-09-18T11:00:00').getTime();
@@ -1365,9 +1574,13 @@ Además, en lugar de regalos convencionales, estaremos muy agradecidos por vuest
     }
 
     function initCarousel() {
-      slidesCarousel = Array.from(document.querySelectorAll('#carouselTrack > .carousel-slide'));
+     slidesCarousel = Array.from(document.querySelectorAll('#carouselTrack > .carousel-slide'));
       if (slidesCarousel.length === 0) return;
-      createDots();
+  
+      // Asignar fondos blur
+        setCarouselBlurBackgrounds();
+  
+       createDots();
       
       track.addEventListener('scroll', () => {
         const slideWidth = slidesCarousel[0]?.clientWidth || 0;
@@ -1397,137 +1610,286 @@ Además, en lugar de regalos convencionales, estaremos muy agradecidos por vuest
       initCarousel();
     }
 
-    // ==================== RSVP FUNCTIONS ====================
-    function showRSVPForm(attending) {
-      document.getElementById('rsvp-choices').classList.add('hidden');
-      if (attending) {
-        document.getElementById('rsvp-form-yes').classList.remove('hidden');
-      } else {
-        document.getElementById('rsvp-form-no').classList.remove('hidden');
-      }
+    // Asignar la imagen de fondo BLUR a cada slide (sin cargar imágenes extra)
+    function setCarouselBlurBackgrounds() {
+  const slides = document.querySelectorAll('.carousel-slide');
+  
+  slides.forEach(slide => {
+    const img = slide.querySelector('.carousel-image');
+    const blurDiv = slide.querySelector('.carousel-blur-bg');
+    
+    if (img && blurDiv) {
+      const imgSrc = img.getAttribute('src');
+      blurDiv.style.backgroundImage = `url('${imgSrc}')`;
     }
+  });
+}
 
-    function resetRSVP() {
-      document.getElementById('rsvp-choices').classList.remove('hidden');
-      document.getElementById('rsvp-form-yes').classList.add('hidden');
-      document.getElementById('rsvp-form-no').classList.add('hidden');
-      document.getElementById('rsvp-success').classList.add('hidden');
-      document.getElementById('rsvp-error').classList.add('hidden');
+   function setCarouselBlurBackgrounds() {
+  const slides = document.querySelectorAll('.carousel-slide');
+  slides.forEach(slide => {
+    const img = slide.querySelector('.carousel-image');
+    const blurDiv = slide.querySelector('.carousel-blur-bg');
+    if (img && blurDiv) {
+      const imgSrc = img.getAttribute('src');
+      blurDiv.style.backgroundImage = `url('${imgSrc}')`;
     }
+  });
+}
 
-    function updateCompanions(count) {
-      const container = document.getElementById('companions-container');
-      const num = parseInt(count) || 0;
-      const lang = document.documentElement.lang || 'es';
-      
-      if (num > 0) {
-        container.classList.remove('hidden');
-        let html = `<div class="p-4 bg-accent/10 rounded-lg border border-border space-y-4"><h4 class="text-lg font-medium text-secondary font-heading mb-4">${translations[lang]['rsvp.companions.title']}</h4>`;
-        for (let i = 0; i < num; i++) {
-          html += `
-            <div class="p-4 bg-white rounded-lg space-y-3 shadow-sm border border-border/50">
-              <h5 class="font-medium text-secondary font-body">${translations[lang]['rsvp.companion']} ${i + 1}</h5>
-              <div>
-                <label class="text-sm font-body text-secondary">${translations[lang]['rsvp.form.name']}</label>
-                <input type="text" name="companion_${i}_name" required class="w-full p-2 border border-border rounded-lg mt-1" placeholder="${translations[lang]['rsvp.form.placeholder.name']}">
-              </div>
-              <div class="flex items-center justify-between mt-2">
-                <label class="text-sm font-body text-secondary flex items-center gap-2">
-                  <i data-lucide="wine" class="w-4 h-4 text-primary"></i> ${translations[lang]['rsvp.form.alcohol']}
-                </label>
-                <input type="checkbox" name="companion_${i}_alcohol" class="w-4 h-4 accent-primary">
-              </div>
-              <div>
-                <label class="text-sm font-body text-secondary">${translations[lang]['rsvp.form.allergies.label']}</label>
-                <select name="companion_${i}_allergy_check" onchange="toggleAllergyInput(this,'allergy_${i}')" class="w-full p-2 border border-border rounded-lg mt-1">
-                  <option value="no">${translations[lang]['common.no']}</option>
-                  <option value="yes">${translations[lang]['common.yes']}</option>
-                </select>
-              </div>
-              <div id="allergy_${i}" class="hidden">
-                <label class="text-sm font-body text-secondary">${translations[lang]['rsvp.form.allergies.detail']}</label>
-                <textarea name="companion_${i}_allergy_detail" rows="2" class="w-full p-2 border border-border rounded-lg mt-1" placeholder="${translations[lang]['rsvp.form.placeholder.allergies']}"></textarea>
-              </div>
-            </div>`;
-        }
-        html += '</div>';
-        container.innerHTML = html;
-        lucide.createIcons();
-      } else {
-        container.classList.add('hidden');
-        container.innerHTML = '';
-      }
-    }
 
-    function toggleAllergyInput(select, id) {
-      const box = document.getElementById(id);
-      if (select.value === "yes") {
-        box.classList.remove("hidden");
-      } else {
-        box.classList.add("hidden");
-      }
-    }
+   // ==================== RSVP FUNCTIONS - VERSIÓN CORREGIDA ====================
+ 
+  function showRSVPForm(attending) {
+  document.getElementById('rsvp-choices').classList.add('hidden');
+  if (attending) {
+    document.getElementById('rsvp-form-yes').classList.remove('hidden');
+    document.getElementById('rsvp-form-no').classList.add('hidden');
+  } else {
+    document.getElementById('rsvp-form-yes').classList.add('hidden');
+    document.getElementById('rsvp-form-no').classList.remove('hidden');
+  }
+  // Ocultar mensajes previos
+  document.getElementById('rsvp-success').classList.add('hidden');
+  document.getElementById('rsvp-error').classList.add('hidden');
+}
 
-    async function submitRSVP(e, attending) {
-      e.preventDefault();
-      const btnId = attending ? 'submit-btn-yes' : 'submit-btn-no';
-      const btn = document.getElementById(btnId);
-      const originalText = btn.innerText;
-      const lang = document.documentElement.lang || 'es';
-      
-      btn.disabled = true;
-      btn.innerText = translations[lang]['rsvp.form.sending'];
-      
-      try {
-        let data = { attending };
-        
-        if (attending) {
-          const form = e.target;
-          const formData = new FormData(form);
-          data.guestName = formData.get('guestName');
-          data.numberOfCompanions = formData.get('companions');
-          data.guestAlcohol = formData.get('guestAlcohol') === 'on';
-          data.guestAllergies = formData.get('guestAllergies');
+function resetRSVP() {
+  document.getElementById('rsvp-choices').classList.remove('hidden');
+  document.getElementById('rsvp-form-yes').classList.add('hidden');
+  document.getElementById('rsvp-form-no').classList.add('hidden');
+  document.getElementById('rsvp-success').classList.add('hidden');
+  document.getElementById('rsvp-error').classList.add('hidden');
+  
+  // Limpiar formulario de "Sí"
+  const yesForm = document.getElementById('rsvp-form-yes');
+  if (yesForm) {
+    yesForm.reset();
+  }
+  
+  // Limpiar acompañantes
+  const companionsContainer = document.getElementById('companions-container');
+  if (companionsContainer) {
+    companionsContainer.classList.add('hidden');
+    companionsContainer.innerHTML = '';
+  }
+  
+  // Resetear el input de número de acompañantes
+  const companionsInput = document.getElementById('companions');
+  if (companionsInput) {
+    companionsInput.value = '0';
+  }
+  
+  lucide.createIcons();
+}
+
+function updateCompanions(count) {
+  const container = document.getElementById('companions-container');
+  const num = parseInt(count) || 0;  
+  const lang = document.documentElement.lang || 'es';
+  
+  if (num > 0) {
+    container.classList.remove('hidden');
+    let html = `
+      <div class="p-4 bg-accent/10 rounded-lg border border-border space-y-4">
+        <h4 class="text-lg font-medium text-secondary font-heading mb-4">${translations[lang]['rsvp.companions.title'] || 'Información de acompañantes'}</h4>
+    `;
+    
+    for (let i = 0; i < num; i++) {
+      html += `
+        <div class="p-4 bg-white rounded-lg space-y-3 shadow-sm border border-border/50" data-companion-index="${i}">
+          <h5 class="font-medium text-secondary font-body">${translations[lang]['rsvp.companion'] || 'Acompañante'} ${i + 1}</h5>
           
-          const companions = [];
-          for (let i = 0; i < data.numberOfCompanions; i++) {
-            companions.push({
-              name: formData.get(`companion_${i}_name`),
-              alcohol: formData.get(`companion_${i}_alcohol`) === 'on',
-              allergies: formData.get(`companion_${i}_allergy_detail`) || ''
-            });
-          }
-          data.companions = companions;
-        }
-        
-        const response = await fetch('https://formspree.io/f/xreawggd', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        
-        if (response.ok) {
-          document.getElementById('rsvp-form-yes').classList.add('hidden');
-          document.getElementById('rsvp-form-no').classList.add('hidden');
-          document.getElementById('rsvp-success').classList.remove('hidden');
-          if (attending) e.target.reset();
-          updateCompanions(0);
-          setTimeout(() => resetRSVP(), 5000);
-        } else {
-          throw new Error('Network response was not ok');
-        }
-      } catch (error) {
-        document.getElementById('rsvp-error').classList.remove('hidden');
-      } finally {
-        btn.innerText = originalText;
-        btn.disabled = false;
+          <div>
+            <label class="text-sm font-body text-secondary block mb-1">${translations[lang]['rsvp.form.name'] || 'Nombre completo'} *</label>
+            <input type="text" name="companion_${i}_name" required 
+                   class="w-full p-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
+                   placeholder="${translations[lang]['rsvp.form.placeholder.name'] || 'Nombre y apellido'}">
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <label class="text-sm font-body text-secondary flex items-center gap-2">
+              <i data-lucide="wine" class="w-4 h-4 text-primary"></i> 
+              ${translations[lang]['rsvp.form.alcohol'] || '¿Consumirá alcohol?'}
+            </label>
+            <input type="checkbox" name="companion_${i}_alcohol" class="w-4 h-4 accent-primary rounded">
+          </div>
+          
+          <div>
+            <label class="text-sm font-body text-secondary block mb-1">${translations[lang]['rsvp.form.allergies.label'] || '¿Tiene alergias alimentarias?'}</label>
+            <select name="companion_${i}_allergy_check" onchange="toggleAllergyInput(this, 'allergy_${i}')" 
+                    class="w-full p-2 border border-border rounded-lg">
+              <option value="no">${translations[lang]['common.no'] || 'No'}</option>
+              <option value="yes">${translations[lang]['common.yes'] || 'Sí'}</option>
+            </select>
+          </div>
+          
+          <div id="allergy_${i}" class="hidden">
+            <label class="text-sm font-body text-secondary block mb-1">${translations[lang]['rsvp.form.allergies.detail'] || 'Detalle de alergias'}</label>
+            <textarea name="companion_${i}_allergy_detail" rows="2" 
+                      class="w-full p-2 border border-border rounded-lg"
+                      placeholder="${translations[lang]['rsvp.form.placeholder.allergies'] || 'Describe las alergias...'}"></textarea>
+          </div>
+        </div>
+      `;
+    }
+    html += `</div>`;
+    container.innerHTML = html;
+    lucide.createIcons();
+  } else {
+    container.classList.add('hidden');
+    container.innerHTML = '';
+  }
+}
+
+function toggleAllergyInput(select, id) {
+  const box = document.getElementById(id);
+  if (select.value === "yes") {
+    box.classList.remove("hidden");
+  } else {
+    box.classList.add("hidden");
+  }
+}
+
+async function submitRSVP(e, attending) {
+  e.preventDefault();
+  
+  const btnId = attending ? 'submit-btn-yes' : 'submit-btn-no';
+  const btn = document.getElementById(btnId);
+  const lang = document.documentElement.lang || 'es';
+  const originalText = btn.innerText;
+  
+  // Deshabilitar botón durante el envío
+  btn.disabled = true;
+  btn.innerText = translations[lang]['rsvp.form.sending'] || 'Enviando...';
+  
+  // Ocultar mensajes previos
+  document.getElementById('rsvp-success').classList.add('hidden');
+  document.getElementById('rsvp-error').classList.add('hidden');
+  
+  try {
+    let data = { 
+      attending: attending,
+      event: "Boda Agnieszka & Mario Alejandro - 18 Septiembre 2026",
+      timestamp: new Date().toISOString()
+    };
+    
+    if (attending) {
+      // Recopilar datos del formulario principal
+      const guestName = document.getElementById('guestName')?.value.trim();
+      if (!guestName) {
+        throw new Error('El nombre es obligatorio');
       }
+      
+      data.guestName = guestName;
+      data.numberOfCompanions = parseInt(document.getElementById('companions')?.value) || 0;
+      data.guestAlcohol = document.querySelector('input[name="guestAlcohol"]')?.checked || false;
+      data.guestAllergies = document.getElementById('guestAllergies')?.value || '';
+      
+      // Recopilar datos de acompañantes
+      const companions = [];
+      for (let i = 0; i < data.numberOfCompanions; i++) {
+        const nameInput = document.querySelector(`input[name="companion_${i}_name"]`);
+        const alcoholCheck = document.querySelector(`input[name="companion_${i}_alcohol"]`);
+        const allergySelect = document.querySelector(`select[name="companion_${i}_allergy_check"]`);
+        const allergyDetail = document.querySelector(`textarea[name="companion_${i}_allergy_detail"]`);
+        
+        if (nameInput && nameInput.value.trim()) {
+          companions.push({
+            name: nameInput.value.trim(),
+            alcohol: alcoholCheck?.checked || false,
+            hasAllergies: allergySelect?.value === 'yes',
+            allergyDetail: allergyDetail?.value || ''
+          });
+        }
+      }
+      data.companions = companions;
+    } else {
+      // Para los que no asisten, podemos pedir un nombre opcional
+      data.message = "No podrá asistir a la boda";
     }
     
-    // Inicializar idioma
-    document.addEventListener('DOMContentLoaded', () => {
-      switchLanguage('es');
+    // Enviar a Formspree
+    const response = await fetch('https://formspree.io/f/xreawggd', {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data)
     });
+    
+    if (response.ok) {
+      // Mostrar éxito
+      document.getElementById('rsvp-success').classList.remove('hidden');
+      
+      // Limpiar y resetear después de éxito
+      if (attending) {
+        const form = document.getElementById('rsvp-form-yes');
+        if (form) form.reset();
+        updateCompanions(0);
+        const companionsInput = document.getElementById('companions');
+        if (companionsInput) companionsInput.value = '0';
+      }
+      
+      // Ocultar formularios y mostrar éxito por 5 segundos, luego volver a inicio
+      setTimeout(() => {
+        resetRSVP();
+        // Scroll suave al header
+        document.getElementById('inicio')?.scrollIntoView({ behavior: 'smooth' });
+      }, 4000);
+      
+    } else {
+      const errorData = await response.json();
+      console.error('Error response:', errorData);
+      throw new Error('Error en el servidor');
+    }
+    
+  } catch (error) {
+    console.error('RSVP Error:', error);
+    document.getElementById('rsvp-error').classList.remove('hidden');
+  } finally {
+    // Rehabilitar botón
+    btn.disabled = false;
+    btn.innerText = originalText;
+  }
+}
+
+ // Detectar sección activa para accesibilidad (opcional)
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.header-link, .mobile-link');
+
+    function updateActiveSection() {
+    const scrollPosition = window.scrollY + 150;
+  
+    sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionBottom = sectionTop + section.offsetHeight;
+    
+    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+      const currentId = section.getAttribute('id');
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === `#${currentId}`) {
+          link.setAttribute('aria-current', 'page');
+          link.classList.add('text-primary', 'font-semibold');
+        } else {
+          link.removeAttribute('aria-current');
+          link.classList.remove('text-primary', 'font-semibold');
+        }
+      });
+    }
+  });
+}
+
+      // Llamar al hacer scroll
+      window.addEventListener('scroll', updateActiveSection);
+
+      // Año dinámico en footer
+      const yearSpan = document.getElementById('currentYear');
+      if (yearSpan) {
+        yearSpan.innerHTML = new Date().getFullYear();
+}
   </script>
 </body>
 </html>
