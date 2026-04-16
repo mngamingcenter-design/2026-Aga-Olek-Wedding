@@ -403,10 +403,18 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-.bg-white.rounded-xl:active {
-  transform: scale(0.98);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
+    .bg-white.rounded-xl:active {
+      transform: scale(0.98);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+      /* Solo en móvil, subir la imagen de portada */
+      @media (max-width: 767px) {
+    .hero-img {
+      object-position: center 35%;
+      }
+    }
+
   </style>
 </head>
 <body class="antialiased">
@@ -481,7 +489,7 @@
       <source media="(max-width: 767px)" srcset="https://i.ibb.co/r2BVK7yJ/IMGnew.png">
       <img src="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg" 
            alt="Agnieszka & Mario Alejandro - Nuestra historia de amor"
-           class="w-full h-full object-cover"
+           class="w-full h-full object-cover hero-img"
            fetchpriority="high"
            decoding="async">
     </picture>
@@ -491,7 +499,7 @@
   </div>
 
   <div class="relative z-10 text-center px-5 sm:px-8 max-w-4xl mx-auto fade-in" style="padding-top: 15rem;">
-    <div class="mb-8">
+    <div class="mb-4">
       <div class="mb-6 md:mb-10">
         <span class="text-4xl md:text-6xl text-primary/80">✧</span>
       </div>
