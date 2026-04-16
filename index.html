@@ -1672,19 +1672,6 @@ window.addEventListener('scroll', () => {
   });
 }
 
-   function setCarouselBlurBackgrounds() {
-  const slides = document.querySelectorAll('.carousel-slide');
-  slides.forEach(slide => {
-    const img = slide.querySelector('.carousel-image');
-    const blurDiv = slide.querySelector('.carousel-blur-bg');
-    if (img && blurDiv) {
-      const imgSrc = img.getAttribute('src');
-      blurDiv.style.backgroundImage = `url('${imgSrc}')`;
-    }
-  });
-}
-
-
    // ==================== RSVP FUNCTIONS - VERSIÓN CORREGIDA ====================
  
   function showRSVPForm(attending) {
