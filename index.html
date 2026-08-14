@@ -672,19 +672,21 @@
       <div class="carousel-track" id="carouselTrack">
 
         <!-- VIDEO (primera slide) -->
-        <div class="carousel-slide relative" id="videoSlide" style="background-color: #f5f1e8; min-height: 80vh;">
-          <div class="relative z-10 flex items-center justify-center p-1 md:p-4" style="min-height: 80vh;">
-            <div class="relative w-full aspect-video rounded-lg shadow-lg overflow-hidden">
-              <iframe 
-                id="videoIframe"
-                class="w-full h-full"
-                frameborder="0"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowfullscreen>
-              </iframe>
-            </div>
-          </div>
-        </div>
+        <div class="carousel-slide relative" id="videoSlide">
+  <div class="carousel-blur-bg" style="background-color: #f5f1e8;"></div>
+  <div class="carousel-overlay"></div>
+  <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
+    <div class="relative w-full max-w-[820px] aspect-video max-h-[70vh] md:max-h-[500px] rounded-lg shadow-lg overflow-hidden">
+      <iframe 
+        id="videoIframe"
+        class="w-full h-full"
+        frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</div>
 
         <!-- ====== IMÁGENES (16 slides) ====== -->
         <!-- 1 -->
