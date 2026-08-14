@@ -1973,6 +1973,39 @@ async function submitRSVP(e, attending) {
       if (yearSpan) {
         yearSpan.innerHTML = new Date().getFullYear();
 }
+
+// Control de reproducción del video según slide visible
+const videoSlide = document.getElementById('videoSlide');
+const videoIframe = document.getElementById('videoIframe');
+const videoSrc = 'https://streamable.com/e/e9pu8a?autoplay=1&mute=1&loop=1';
+
+function updateVideoPlayback() {
+  if (!videoSlide || !videoIframe) return;
+  
+  // Buscar índice del slide del video
+  const videoIndex = slidesCarousel.indexOf(videoSlide);
+  
+  if (currentIndexCarousel === videoIndex) {
+    if (videoIframe.src !== videoSrc) {
+      videoIframe.src = videoSrc;
+    }
+  } else {
+    if (videoIframe.src !== '') {
+      videoIframe.src = ''; // Detiene y libera recursos
+    }
+  }
+}
+
+// Sobrescribir updateCarousel para incluir control de video
+const originalUpdateCarousel = updateCarousel;
+updateCarousel = function() {
+  originalUpdateCarousel();
+  updateVideoPlayback();
+};
+
+// Llamar al inicio después de que el carrusel esté listo
+setTimeout(updateVideoPlayback, 200);
+
   </script>
 </body>
 </html>
