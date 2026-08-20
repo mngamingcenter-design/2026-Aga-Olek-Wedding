@@ -419,31 +419,74 @@
     header.scrolled .header-subtext { color: #2c2c2c !important; 
     }
 
-    /* ===== Video carousel - mobile improvements ===== */
+    /* ===== Video carousel: eliminar franjas negras con fondo desenfocado ===== */
 .video-wrapper {
+  position: relative;
   width: 100%;
   max-width: 100%;
-  aspect-ratio: 16/9;
-  max-height: 70vh;
+  height: 72vh;           /* ajustable */
+  max-height: 85vh;
+  margin-bottom: 0.75rem;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent; /* ya no usamos color negro */
 }
 
+/* Pseudo-elemento que usa el poster como fondo desenfocado/escala */
+.video-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('https://i.ibb.co/SwM9F7s0/IMG-7166.jpg'); /* usa tu poster aquí si quieres */
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.06);   /* ligera ampliación para cubrir bordes */
+  filter: blur(14px) saturate(1.05) brightness(0.95);
+  opacity: 0.95;
+}
+
+/* El video está por encima del blurred-background */
 #carouselVideo {
-  width: 100%;
+  position: relative;
+  z-index: 1;
+  width: auto;            /* mantiene relación; se escala por altura */
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  max-width: 100%;
+  object-fit: contain;    /* muestra todo el cuadro sin recortar */
+  object-position: center 65%;
   display: block;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  background: transparent;
 }
 
-/* Mostrar el vídeo más grande en móvil; ajuste de aspecto para pantallas estrechas */
-@media (max-width: 767px) {
+/* En escritorio preferimos cover para estética (opcional) */
+@media (min-width: 768px) {
   .video-wrapper {
-    aspect-ratio: 3/2;   /* más alto en móvil */
-    max-height: 80vh;    /* ocupa mayor parte de pantalla en móvil */
+    height: 60vh;
+    max-height: 70vh;
   }
-  .carousel-slide { min-height: auto; }
+  #carouselVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+/* Ajustes finos para móviles muy estrechos */
+@media (max-width: 420px) {
+  .video-wrapper {
+    height: 80vh;
+    max-height: 88vh;
+  }
+  #carouselVideo {
+    object-position: center 68%;
+  }
 }
 
   </style>
