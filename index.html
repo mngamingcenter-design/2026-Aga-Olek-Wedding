@@ -419,6 +419,33 @@
     header.scrolled .header-subtext { color: #2c2c2c !important; 
     }
 
+    /* ===== Video carousel - mobile improvements ===== */
+.video-wrapper {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16/9;
+  max-height: 70vh;
+}
+
+#carouselVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Mostrar el vídeo más grande en móvil; ajuste de aspecto para pantallas estrechas */
+@media (max-width: 767px) {
+  .video-wrapper {
+    aspect-ratio: 3/2;   /* más alto en móvil */
+    max-height: 80vh;    /* ocupa mayor parte de pantalla en móvil */
+  }
+  .carousel-slide { min-height: auto; }
+}
+
   </style>
 </head>
 <body class="antialiased">
@@ -675,15 +702,24 @@
         <div class="carousel-slide relative" id="videoSlide">
   <div class="carousel-blur-bg" style="background-color: #f5f1e8;"></div>
   <div class="carousel-overlay"></div>
+
   <div class="relative z-10 flex items-center justify-center p-4 md:p-8" style="min-height: 500px;">
-    <div class="relative w-full max-w-[820px] aspect-video max-h-[70vh] md:max-h-[500px] rounded-lg shadow-lg overflow-hidden">
-      <iframe 
-        id="videoIframe"
-        class="w-full h-full"
-        frameborder="0"
-        allow="autoplay; encrypted-media; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+    <div class="video-wrapper w-full rounded-lg shadow-lg overflow-hidden">
+      <video
+        id="carouselVideo"
+        class="w-full h-full object-cover"
+        playsinline
+        muted
+        autoplay
+        preload="metadata"
+        loop
+        poster="https://i.ibb.co/SwM9F7s0/IMG-7166.jpg"
+        crossorigin="anonymous"
+        aria-label="Video de la boda — autoplay cuando visible"
+      >
+        <source src="https://res.cloudinary.com/dlri8rxn5/video/upload/v1786716123/Video_viral_Cuz_2026_q3pszm.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
     </div>
   </div>
 </div>
@@ -1976,37 +2012,58 @@ async function submitRSVP(e, attending) {
         yearSpan.innerHTML = new Date().getFullYear();
 }
 
-// Control de reproducción del video según slide visible
+// ===== Control de reproducción del <video> nativo en el carrusel =====
 const videoSlide = document.getElementById('videoSlide');
-const videoIframe = document.getElementById('videoIframe');
-const videoSrc = 'https://streamable.com/e/e9pu8a?autoplay=1&mute=1&loop=1';
 
 function updateVideoPlayback() {
-  if (!videoSlide || !videoIframe) return;
-  
-  // Buscar índice del slide del video
+  const carouselVideo = document.getElementById('carouselVideo');
+  if (!carouselVideo || !slidesCarousel || slidesCarousel.length === 0) return;
+
   const videoIndex = slidesCarousel.indexOf(videoSlide);
-  
+  if (videoIndex === -1) return;
+
   if (currentIndexCarousel === videoIndex) {
-    if (videoIframe.src !== videoSrc) {
-      videoIframe.src = videoSrc;
+    // Preparar reproducción para políticas móviles: muted + playsInline
+    try {
+      carouselVideo.muted = true;
+      carouselVideo.playsInline = true;
+      // Intentar reproducir; algunos navegadores devuelven una promesa
+      const playPromise = carouselVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          // Autoplay falló (política del navegador). Sólo logeamos.
+          console.warn('Autoplay falló:', err);
+        });
+      }
+    } catch (err) {
+      console.warn('Error al reproducir video:', err);
     }
   } else {
-    if (videoIframe.src !== '') {
-      videoIframe.src = ''; // Detiene y libera recursos
+    // Pausar y resetear para liberar recursos y evitar audio inesperado
+    try {
+      carouselVideo.pause();
+      carouselVideo.currentTime = 0;
+    } catch (err) {
+      // ignorar
     }
   }
 }
 
-// Sobrescribir updateCarousel para incluir control de video
-const originalUpdateCarousel = updateCarousel;
-updateCarousel = function() {
-  originalUpdateCarousel();
-  updateVideoPlayback();
-};
+// Asegurar que updateCarousel también llame a updateVideoPlayback
+// Usamos un nombre interno para no sobrescribir otras variables llamadas originalUpdateCarousel
+if (typeof updateCarousel === 'function') {
+  const __original_updateCarousel_for_video = updateCarousel;
+  updateCarousel = function() {
+    __original_updateCarousel_for_video();
+    updateVideoPlayback();
+  };
+} else {
+  // Fallback: crear una función que pueda ser llamada si otro código espera updateCarousel
+  window.updateCarousel = function() { updateVideoPlayback(); };
+}
 
-// Llamar al inicio después de que el carrusel esté listo
-setTimeout(updateVideoPlayback, 200);
+// Llamada inicial tras la inicialización del carrusel
+setTimeout(updateVideoPlayback, 300);
 
   </script>
 </body>
