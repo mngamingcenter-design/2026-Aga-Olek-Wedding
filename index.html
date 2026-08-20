@@ -408,16 +408,20 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
     
-      /* Solo en móvil, subir la imagen de portada */
-      @media (max-width: 767px) {
-    picture.hero-img {
-      object-fit: cover;
-      object-position: 57% 100% !important;
-      }
-    }
-    
-    header.scrolled .header-subtext { color: #2c2c2c !important; 
-    }
+       /* Solo en móvil, subir la imagen de portada */
+     @media (max-width: 767px) {
+  /* Mover imagen hero un poco hacia la izquierda y ajustar foco vertical */
+  .hero-img,
+  picture.hero-img img {
+    object-fit: cover;
+    object-position: 57% 100% !important; /* X% Y% -> horizontal 40% = izquierda ligera, vertical 55% = centrar algo más abajo */
+  }
+
+  /* Reducir el padding-top del contenedor de texto del hero en móvil */
+  #inicio .relative.z-10 {
+    padding-top: 6rem !important; /* antes estaba 15rem inline; aquí lo reducimos solo para móviles */
+  }
+}
 
     /* ===== Video carousel: eliminar franjas negras con fondo desenfocado ===== */
 .video-wrapper {
